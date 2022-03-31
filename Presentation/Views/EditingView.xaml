@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Presentation.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="Auto"/>
@@ -23,21 +23,15 @@
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0"
-                       Text="Profilredigering"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="24"/>
-
-            <Button Grid.Row="1" 
+            <Button 
                     Content="Vælg billede" 
-                    Style="{StaticResource EditButtonTheme}"/>
-            <Button Grid.Row="2"
+                    Style="{StaticResource EditButtonTheme}" BorderBrush="#FFF4C6B9" Foreground="#FFFF0039" Margin="0,133,-0.333,27" Grid.RowSpan="2"/>
+            <Button Grid.Row="1"
                     Content="Vælg lydfil"
-                    Style="{StaticResource EditButtonTheme}"/>
-            <Button Grid.Row="3"
+                    Style="{StaticResource EditButtonTheme}" BorderBrush="#FFF4C6B9" Foreground="#FFFF0039" Margin="0,18,-0.333,22" Grid.RowSpan="2"/>
+            <Button Grid.Row="2"
                     Content="Slet profil"
-                    Style="{StaticResource EditButtonTheme}"/>
+                    Style="{StaticResource EditButtonTheme}" BorderBrush="#FFF4C6B9" Foreground="#FFFF0039" Margin="0,23,-0.333,17" Grid.RowSpan="2"/>
             <Button Grid.Row="5"
                     Content="Gem profil"
                     Style="{StaticResource SaveButtonTheme}"/>
@@ -45,6 +39,7 @@
                     Content="Tilbage"
                     Style="{StaticResource BackButtonTheme}"/>
         </Grid>
+        <Label Content="Rediger profil" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Calisto MT" Width="220" Foreground="#FFFF0039" Height="41"/>
 
     </Grid>
 </UserControl>
