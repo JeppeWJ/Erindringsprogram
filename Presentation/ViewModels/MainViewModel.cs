@@ -22,7 +22,7 @@ namespace Presentation.ViewModels
       {
          EditingVM = new EditingViewModel();
          HomeVM = new HomeViewModel();
-         CurrentView = HomeVM;
+         CurrentView = EditingVM;
       }
    }
 }
