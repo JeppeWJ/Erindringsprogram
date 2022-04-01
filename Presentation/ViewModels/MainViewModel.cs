@@ -28,7 +28,7 @@ namespace Presentation.ViewModels
          LoginVM = new LoginViewModel();
          CreateProfileVM = new CreateProfileViewModel();
 
-         CurrentView = CreateProfileVM;
+         CurrentView = LoginVM;
       }
    }
 }
