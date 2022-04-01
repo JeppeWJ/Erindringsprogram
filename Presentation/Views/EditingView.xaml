@@ -23,15 +23,22 @@
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
-            <Button 
-                    Content="Vælg billede" 
-                    Style="{StaticResource EditButtonTheme}" BorderBrush="#FFF4C6B9" Foreground="#FFFF0039" Margin="0,133,-0.333,27" Grid.RowSpan="2"/>
-            <Button Grid.Row="1"
-                    Content="Vælg lydfil"
-                    Style="{StaticResource EditButtonTheme}" BorderBrush="#FFF4C6B9" Foreground="#FFFF0039" Margin="0,18,-0.333,22" Grid.RowSpan="2"/>
+            <Button Content="Vælg billede" 
+                    Style="{StaticResource EditButtonTheme}"
+                    BorderBrush="#FFF4C6B9"
+                    Grid.Row="1"/>
+
             <Button Grid.Row="2"
+                    Content="Vælg lydfil"
+                    Style="{StaticResource EditButtonTheme}"
+                    BorderBrush="#FFF4C6B9"/>
+
+            <Button Grid.Row="3"
                     Content="Slet profil"
-                    Style="{StaticResource EditButtonTheme}" BorderBrush="#FFF4C6B9" Foreground="#FFFF0039" Margin="0,23,-0.333,17" Grid.RowSpan="2"/>
+                    Style="{StaticResource EditButtonTheme}"
+                    BorderBrush="#FFF4C6B9"
+                    Foreground="#FFFF0039"/>
+
             <Button Grid.Row="5"
                     Content="Gem profil"
                     Style="{StaticResource SaveButtonTheme}"/>
