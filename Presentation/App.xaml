@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Templates/EditButtonTheme.xaml"/>
                 <ResourceDictionary Source="Templates/BackButtonTheme.xaml"/>
                 <ResourceDictionary Source="Templates/SaveButtonTheme.xaml"/>
+                <ResourceDictionary Source="Templates/WideEditButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:EditingViewModel}">
@@ -20,7 +21,12 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <views:HomeView/>
             </DataTemplate>
-
+            <DataTemplate DataType="{x:Type viewModel:CreateProfileViewModel}">
+                <views:CreateProfileView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <views:LoginView/>
+            </DataTemplate>
         </ResourceDictionary>
 
     </Application.Resources>

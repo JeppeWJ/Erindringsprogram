@@ -10,6 +10,9 @@ namespace Presentation.ViewModels
    {
       public EditingViewModel EditingVM;
       public HomeViewModel HomeVM;
+      public LoginViewModel LoginVM;
+      public CreateProfileViewModel CreateProfileVM;
+
       private object _currentView;
 
       public object CurrentView
@@ -22,7 +25,10 @@ namespace Presentation.ViewModels
       {
          EditingVM = new EditingViewModel();
          HomeVM = new HomeViewModel();
-         CurrentView = EditingVM;
+         LoginVM = new LoginViewModel();
+         CreateProfileVM = new CreateProfileViewModel();
+
+         CurrentView = LoginVM;
       }
    }
 }

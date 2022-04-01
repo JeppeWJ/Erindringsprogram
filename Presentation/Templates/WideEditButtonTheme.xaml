@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style BasedOn="{StaticResource {x:Type Button}}"
            TargetType="{x:Type Button}"
-           x:Key="EditButtonTheme">
+           x:Key="WideEditButtonTheme">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -10,8 +10,8 @@
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}"
-                              Height="30"
-                              Width="150">
+                              Height="44"
+                              Width="154">
 
                             <TextBlock Text="{TemplateBinding Content}"
                                        VerticalAlignment="Center"

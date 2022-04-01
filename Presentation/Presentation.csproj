@@ -55,8 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\CreateProfileViewModel.cs" />
     <Compile Include="ViewModels\EditingViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CreateProfileView.xaml.cs">
@@ -92,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Templates\SaveButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\WideEditButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,13 +145,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Billede.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\ElderlyWomanWithTablet.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Billede2.png" />
+    <Resource Include="Images\Billede.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Billede2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
