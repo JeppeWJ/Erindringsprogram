@@ -17,7 +17,7 @@
 
         <Label Content="Login til erindringsprogrammet" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="30" FontFamily="Calisto MT" Width="426" Foreground="#FFFF0039" Height="53"/>
         <TextBox HorizontalAlignment="Left" Height="27" Margin="80,173,0,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" Width="181"/>
-        <TextBox HorizontalAlignment="Left" Height="27" Margin="80,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" RenderTransformOrigin="0.52,1.365"/>
+        <TextBox HorizontalAlignment="Left" Height="27" Margin="80,252,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" Width="181" RenderTransformOrigin="0.52,1.365"/>
         <Label Content="Indtast brugernavn:" HorizontalAlignment="Left" Margin="77,137,0,0" VerticalAlignment="Top" Foreground="#FF151616" FontSize="18" FontFamily="Calisto MT"/>
         <Label Content="Indtast adgangskode:" HorizontalAlignment="Left" Margin="77,218,0,0" VerticalAlignment="Top" Foreground="#FF212222" FontSize="18" FontFamily="Calisto MT"/>
         <Image HorizontalAlignment="Left" Height="253" Margin="391,137,0,0" VerticalAlignment="Top" Width="383" Source="../Images/Billede2.png" RenderTransformOrigin="0.667,0.586"/>

@@ -37,6 +37,6 @@ namespace Presentation.ViewModels
             OnPropertyChanged(nameof(Password));
          }
       }
-
+      
    }
 }

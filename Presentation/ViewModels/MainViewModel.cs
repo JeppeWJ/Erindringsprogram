@@ -16,12 +16,12 @@ namespace Presentation.ViewModels
       public LoginViewModel LoginVM;
       public CreateProfileViewModel CreateProfileVM;
 
-      private object _currentView;
+      private object _currentViewModel;
 
-      public object CurrentView
+      public object CurrentViewModel
       {
-         get { return _currentView; }
-         set { _currentView = value; }
+         get { return _currentViewModel; }
+         set { _currentViewModel = value; }
       }
 
       public MainViewModel()
@@ -31,9 +31,8 @@ namespace Presentation.ViewModels
          LoginVM = new LoginViewModel();
          CreateProfileVM = new CreateProfileViewModel();
 
-         CurrentView = LoginVM;
+         CurrentViewModel = LoginVM;
 
-         //asdf
       }
    }
 }
