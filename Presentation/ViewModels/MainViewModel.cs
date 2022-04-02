@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Presentation.Commands;
 
 namespace Presentation.ViewModels
 {
@@ -12,6 +14,8 @@ namespace Presentation.ViewModels
       public HomeViewModel HomeVM;
       public LoginViewModel LoginVM;
       public CreateProfileViewModel CreateProfileVM;
+
+      public LoginCommand LoginPressed { get; }
 
       private object _currentView;
 
@@ -23,12 +27,13 @@ namespace Presentation.ViewModels
 
       public MainViewModel()
       {
+
          EditingVM = new EditingViewModel();
          HomeVM = new HomeViewModel();
          LoginVM = new LoginViewModel();
          CreateProfileVM = new CreateProfileViewModel();
 
-         CurrentView = CreateProfileVM;
+         CurrentView = LoginVM;
       }
    }
 }

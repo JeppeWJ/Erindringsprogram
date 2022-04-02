@@ -37,10 +37,5 @@ namespace Presentation.ViewModels
          }
       }
 
-
-      public LoginViewModel()
-      {
-         LoginPressed = new LoginCommand();
-      }
    }
 }

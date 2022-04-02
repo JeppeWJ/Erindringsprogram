@@ -155,6 +155,11 @@
   <ItemGroup>
     <Resource Include="Images\Billede2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Logic 2.0\Logic 2.0.csproj">
+      <Project>{cc6f9f5c-0106-41d1-a983-9c6e1b816768}</Project>
+      <Name>Logic 2.0</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
