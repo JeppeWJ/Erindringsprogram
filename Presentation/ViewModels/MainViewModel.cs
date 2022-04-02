@@ -32,6 +32,8 @@ namespace Presentation.ViewModels
          CreateProfileVM = new CreateProfileViewModel();
 
          CurrentView = LoginVM;
+
+         //asdf
       }
    }
 }
