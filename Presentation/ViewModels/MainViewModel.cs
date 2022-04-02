@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Logic_2._0.LoginClasses;
 using Presentation.Commands;
 
 namespace Presentation.ViewModels
@@ -15,8 +16,6 @@ namespace Presentation.ViewModels
       public LoginViewModel LoginVM;
       public CreateProfileViewModel CreateProfileVM;
 
-      public LoginCommand LoginPressed { get; }
-
       private object _currentView;
 
       public object CurrentView
@@ -27,7 +26,6 @@ namespace Presentation.ViewModels
 
       public MainViewModel()
       {
-
          EditingVM = new EditingViewModel();
          HomeVM = new HomeViewModel();
          LoginVM = new LoginViewModel();
