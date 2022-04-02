@@ -27,8 +27,8 @@ namespace Presentation.ViewModels
             OnPropertyChanged(nameof(Username));
          }
       }
-      private int _password;
-      public int Password
+      private string _password;
+      public string Password
       {
          get { return _password; }
          set
@@ -37,6 +37,10 @@ namespace Presentation.ViewModels
             OnPropertyChanged(nameof(Password));
          }
       }
-      
+
+      public LoginViewModel(ILoginManager loginManager)
+      {
+         LoginPressed = new LoginCommand(this, loginManager);
+      }
    }
 }

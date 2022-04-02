@@ -24,11 +24,11 @@ namespace Presentation.ViewModels
          set { _currentViewModel = value; }
       }
 
-      public MainViewModel()
+      public MainViewModel(ILoginManager loginManager)
       {
          EditingVM = new EditingViewModel();
          HomeVM = new HomeViewModel();
-         LoginVM = new LoginViewModel();
+         LoginVM = new LoginViewModel(loginManager);
          CreateProfileVM = new CreateProfileViewModel();
 
          CurrentViewModel = LoginVM;

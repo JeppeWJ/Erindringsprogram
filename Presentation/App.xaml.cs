@@ -16,11 +16,17 @@ namespace Presentation
    /// </summary>
    public partial class App : Application
    {
+      private readonly ILoginManager _loginManager;
+
+      public App()
+      {
+         _loginManager = new TestLoginManager();
+      }
       protected override void OnStartup(StartupEventArgs e)
       {
          MainWindow = new MainWindow()
          {
-            DataContext = new MainViewModel()
+            DataContext = new MainViewModel(_loginManager)
          };
          MainWindow.Show();
 
