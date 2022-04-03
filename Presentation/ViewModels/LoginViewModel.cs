@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Logic_2._0.LoginClasses;
+using Logic_2._0.RelativeManagerClasses;
 using Presentation.Commands;
 
 namespace Presentation.ViewModels

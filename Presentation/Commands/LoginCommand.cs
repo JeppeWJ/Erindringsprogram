@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Logic_2._0.LoginClasses;
+using Logic_2._0.RelativeManagerClasses;
 using Presentation.ViewModels;
 
 namespace Presentation.Commands
@@ -20,6 +21,7 @@ namespace Presentation.Commands
          _loginManager = loginManager;
          _loginViewModel = loginViewModel;
          _navigationControl = navigationControl;
+         
       }
       public override void Execute(object parameter)
       {
