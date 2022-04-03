@@ -10,6 +10,22 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <views:LoginView DataContext="{Binding CurrentViewModel}"/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+                <views:LoginView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:EditingViewModel}">
+                <views:EditingView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
+                <views:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:CreateProfileViewModel}">
+                <views:CreateProfileView/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+
     </Grid>
 </Window>

@@ -13,17 +13,19 @@ namespace Presentation.Commands
    {
       private readonly ILoginManager _loginManager;
       private readonly LoginViewModel _loginViewModel;
+      private readonly NavigationControl _navigationControl;
 
-      public LoginCommand(LoginViewModel loginViewModel, ILoginManager loginManager)
+      public LoginCommand(LoginViewModel loginViewModel, ILoginManager loginManager, NavigationControl navigationControl)
       {
          _loginManager = loginManager;
          _loginViewModel = loginViewModel;
+         _navigationControl = navigationControl;
       }
       public override void Execute(object parameter)
       {
          if (_loginManager.CheckLogin(new LoginInfoDTO(_loginViewModel.Username, _loginViewModel.Password, "123")))
          {
-            MessageBox.Show("Login lykkedes", "Login forsøg");
+            _navigationControl.CurrentViewModel = new HomeViewModel();
          }
          else
          {

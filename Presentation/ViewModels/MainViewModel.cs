@@ -11,28 +11,22 @@ namespace Presentation.ViewModels
 {
    class MainViewModel : ViewModelBase
    {
-      public EditingViewModel EditingVM;
-      public HomeViewModel HomeVM;
-      public LoginViewModel LoginVM;
-      public CreateProfileViewModel CreateProfileVM;
+      private readonly NavigationControl _navigationControl;
 
-      private object _currentViewModel;
 
-      public object CurrentViewModel
+      public object CurrentViewModel => _navigationControl.CurrentViewModel;
+
+
+      public MainViewModel(ILoginManager loginManager, NavigationControl navigationControl)
       {
-         get { return _currentViewModel; }
-         set { _currentViewModel = value; }
+         _navigationControl = navigationControl;
+
+         _navigationControl.CurrentViewModelChanged += OnCurrentViewModelChanged;
       }
 
-      public MainViewModel(ILoginManager loginManager)
+      private void OnCurrentViewModelChanged()
       {
-         EditingVM = new EditingViewModel();
-         HomeVM = new HomeViewModel();
-         LoginVM = new LoginViewModel(loginManager);
-         CreateProfileVM = new CreateProfileViewModel();
-
-         CurrentViewModel = LoginVM;
-
+         OnPropertyChanged(nameof(CurrentViewModel));
       }
    }
 }

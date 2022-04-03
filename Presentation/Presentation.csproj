@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Commands\NavigationControl.cs" />
     <Compile Include="ViewModels\CreateProfileViewModel.cs" />
     <Compile Include="ViewModels\EditingViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />

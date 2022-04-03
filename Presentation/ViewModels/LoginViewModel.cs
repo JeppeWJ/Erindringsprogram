@@ -38,9 +38,9 @@ namespace Presentation.ViewModels
          }
       }
 
-      public LoginViewModel(ILoginManager loginManager)
+      public LoginViewModel(ILoginManager loginManager, NavigationControl navigationControl)
       {
-         LoginPressed = new LoginCommand(this, loginManager);
+         LoginPressed = new LoginCommand(this, loginManager, navigationControl);
       }
    }
 }

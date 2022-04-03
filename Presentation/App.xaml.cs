@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Logic_2._0.LoginClasses;
+using Presentation.Commands;
 using Presentation.ViewModels;
 
 
@@ -17,16 +18,20 @@ namespace Presentation
    public partial class App : Application
    {
       private readonly ILoginManager _loginManager;
+      private readonly NavigationControl _navigationControl;
 
       public App()
       {
          _loginManager = new TestLoginManager();
+         _navigationControl = new NavigationControl();
       }
       protected override void OnStartup(StartupEventArgs e)
       {
+         _navigationControl.CurrentViewModel = new LoginViewModel(_loginManager, _navigationControl);
+
          MainWindow = new MainWindow()
          {
-            DataContext = new MainViewModel(_loginManager)
+            DataContext = new MainViewModel(_loginManager, _navigationControl)
          };
          MainWindow.Show();
 
