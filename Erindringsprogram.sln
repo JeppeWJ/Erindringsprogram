@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic 2.0", "Logic 2.0\Logic 2.0.csproj", "{CC6F9F5C-0106-41D1-A983-9C6E1B816768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess 2.0", "DataAccess 2.0\DataAccess 2.0.csproj", "{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess 2", "DataAccess 2.0\DataAccess 2.csproj", "{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
