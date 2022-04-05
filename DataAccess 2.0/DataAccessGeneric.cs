@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 namespace DataAccess_2._0
 {
 
-    public class DataAccessGeneric
+    public class DataAccessGeneric : IDataAccessGeneric
     {
 
         private string imagePath { get; set; }
@@ -24,7 +24,7 @@ namespace DataAccess_2._0
         private byte[] output;
         private MediaPlayer mediaPlayer = new MediaPlayer();
 
-        private void LoadButton_Click(object sender, RoutedEventArgs e) //Click on the load button
+        private void LoadImage() //Click on the load button
         {
             OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
 
@@ -39,7 +39,7 @@ namespace DataAccess_2._0
             }
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e) //Click on the add button
+        private void AddImage(object sender, RoutedEventArgs e) //Click on the add button
         {
             // Connection string to the database
             string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; //Connection string for the database
@@ -73,7 +73,7 @@ namespace DataAccess_2._0
 
         }
 
-        private void ShowButton_Click(object sender, RoutedEventArgs e)
+        private void ShowImage()
         {
             string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; //Connection string for the database
 
