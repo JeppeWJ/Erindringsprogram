@@ -12,10 +12,10 @@ using System.Media;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace DataAccess_2._0
+namespace DataAccess_2
 {
 
-    public class DataAccessGeneric : IDataAccessGeneric
+    public class DataAccess : DataAccessSubject
     {
 
         private string imagePath { get; set; }
@@ -23,6 +23,14 @@ namespace DataAccess_2._0
         private SqlDataReader dataReader;
         private byte[] output;
         private MediaPlayer mediaPlayer = new MediaPlayer();
+
+
+
+
+        public void ManageFile(byte[] blob, bool fileType, uint personID)
+        {
+            NotifyObservers(blob, fileType, personID);
+        }
 
         private void LoadImage() //Click on the load button
         {
@@ -39,7 +47,9 @@ namespace DataAccess_2._0
             }
         }
 
-        private void AddImage(object sender, RoutedEventArgs e) //Click on the add button
+
+
+        private void AddImage() //Click on the add button
         {
             // Connection string to the database
             string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; //Connection string for the database
@@ -192,6 +202,12 @@ namespace DataAccess_2._0
             mediaPlayer.Play(); //Play the sound
 
             //https://stackoverflow.com/questions/2665362/convert-byte-array-to-wav-file
+        }
+
+
+        public void Update(byte[] blob)
+        {
+
         }
 
 
