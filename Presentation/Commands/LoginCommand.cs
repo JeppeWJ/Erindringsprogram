@@ -27,7 +27,7 @@ namespace Presentation.Commands
       {
          if (_loginManager.CheckLogin(new LoginInfoDTO(_loginViewModel.Username, _loginViewModel.Password, "123")))
          {
-            _navigationControl.CurrentViewModel = new HomeViewModel();
+            _navigationControl.CurrentViewModel = new HomeViewModel(_navigationControl);
          }
          else
          {
