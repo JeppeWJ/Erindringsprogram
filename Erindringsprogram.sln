@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{BB4FB5A3-7993-4C71-A218-08276EE3C158}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{11A0BCC8-5E81-4144-8838-00FA970BD006}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic 2.0", "Logic 2.0\Logic 2.0.csproj", "{CC6F9F5C-0106-41D1-A983-9C6E1B816768}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess 2", "DataAccess 2.0\DataAccess 2.csproj", "{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}"
@@ -21,10 +19,6 @@ Global
 		{BB4FB5A3-7993-4C71-A218-08276EE3C158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB4FB5A3-7993-4C71-A218-08276EE3C158}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB4FB5A3-7993-4C71-A218-08276EE3C158}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11A0BCC8-5E81-4144-8838-00FA970BD006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11A0BCC8-5E81-4144-8838-00FA970BD006}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11A0BCC8-5E81-4144-8838-00FA970BD006}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11A0BCC8-5E81-4144-8838-00FA970BD006}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC6F9F5C-0106-41D1-A983-9C6E1B816768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC6F9F5C-0106-41D1-A983-9C6E1B816768}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC6F9F5C-0106-41D1-A983-9C6E1B816768}.Release|Any CPU.ActiveCfg = Release|Any CPU
