@@ -14,7 +14,7 @@
 
         <TextBlock Grid.Column="1"
                    Grid.Row="1"
-                   Text="Hans lotte"
+                   Text="{Binding RelativeName}"
                    Margin="50,40,0,0"
                    FontSize="32"/>
 
@@ -50,7 +50,8 @@
                     Style="{StaticResource SaveButtonTheme}"/>
             <Button Grid.Row="6"
                     Content="Tilbage"
-                    Style="{StaticResource BackButtonTheme}"/>
+                    Style="{StaticResource BackButtonTheme}"
+                    Command="{Binding BackCommand}"/>
         </Grid>
         <Label Content="Rediger profil" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Calisto MT" Width="220" Foreground="#FFFF0039" Height="41"/>
 

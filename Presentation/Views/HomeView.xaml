@@ -118,7 +118,8 @@
                 BorderBrush="#FFF4C6B9"
                 Grid.Column="1"
                 Grid.RowSpan="2"
-                Command="{Binding EditProfileCommand}"/>
+                Command="{Binding EditProfileCommand}"
+                CommandParameter="{Binding SelectedProfile}"/>
 
 
     </Grid>

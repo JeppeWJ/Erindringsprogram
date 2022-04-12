@@ -17,9 +17,9 @@ namespace Presentation.ViewModels
       public ICommand EditProfileCommand { get; }
       public ICommand CreateProfileCommand { get; }
 
-      private string _selectedProfile;
+      private RelativeViewModel _selectedProfile;
 
-      public string SelectedProfile
+      public RelativeViewModel SelectedProfile
       {
          get { return _selectedProfile; }
          set
@@ -37,6 +37,7 @@ namespace Presentation.ViewModels
          _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Birgit" }));
 
          CreateProfileCommand = new CreateCommand(navigationControl);
+         EditProfileCommand = new EditCommand(navigationControl);
       }
    }
 }
