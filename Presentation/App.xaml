@@ -12,6 +12,9 @@
                 <ResourceDictionary Source="Templates/BackButtonTheme.xaml"/>
                 <ResourceDictionary Source="Templates/SaveButtonTheme.xaml"/>
                 <ResourceDictionary Source="Templates/WideEditButtonTheme.xaml"/>
+                <ResourceDictionary Source="Templates/NameTBTheme.xaml"/>
+                <ResourceDictionary Source="Templates/BirthdayTBTheme.xaml"/>
+                <ResourceDictionary Source="Templates/RelationTBTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:EditingViewModel}">
