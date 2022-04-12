@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Presentation.ViewModels;
 
 namespace Presentation.Commands
@@ -17,7 +18,16 @@ namespace Presentation.Commands
       }
       public override void Execute(object parameter)
       {
-         _navigationControl.CurrentViewModel = new EditingViewModel(_navigationControl);
+         if (parameter != null)
+         {
+            RelativeViewModel relative = (RelativeViewModel)parameter;
+            _navigationControl.CurrentViewModel = new EditingViewModel(_navigationControl, relative);
+         }
+         else
+         {
+            MessageBox.Show("Der er ikke valgt en profil");
+         }
+         
       }
    }
 }

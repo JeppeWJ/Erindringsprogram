@@ -14,7 +14,7 @@
 
         <TextBlock Grid.Column="1"
                    Grid.Row="1"
-                   Text="Hans lotte"
+                   Text="{Binding RelativeName}"
                    Margin="50,40,0,0"
                    FontSize="32"/>
 
