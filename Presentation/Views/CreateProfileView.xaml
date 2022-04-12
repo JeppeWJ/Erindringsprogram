@@ -20,8 +20,8 @@
                  VerticalAlignment="Center"
                  HorizontalAlignment="Left"
                  Margin="76,136,0,279"
-                 Width="170"
-                 FontSize="12"
+                 Width="200"
+                 FontSize="14"
                  Style="{StaticResource NameTextbox}"/>
 
         <TextBox Height="35"
@@ -29,14 +29,15 @@
                  HorizontalAlignment="Stretch"
                  Margin="76,195,554,220"
                  TextWrapping="Wrap"
-                 Width="170"
+                 Width="200"
+                 FontSize="14"
                  Style="{StaticResource DateOfBirthTextbox}"/>
 
         <TextBox Height="35"
                  Margin="76,252,554,163"
                  TextWrapping="Wrap"
-                 Text=""
-                 Width="170"
+                 Width="200"
+                 FontSize="14"
                  Style="{StaticResource RelationTextbox}"
                  VerticalAlignment="Stretch"
                  HorizontalAlignment="Stretch"/>
@@ -45,13 +46,13 @@
                 Style="{StaticResource EditButtonTheme}"
                 Height="30"
                 Width="150"
-                Margin="444,155,55,260"/>
+                Margin="520,174,130,246" Background="#FFF4C6B9"/>
 
         <Button Content="Upload lydfil"
                 Style="{StaticResource EditButtonTheme}"
                 Height="30"
                 Width="150"
-                Margin="444,211,55,199"/>
+                Margin="520,231,130,189"/>
 
         <Button Content="Gem profil"
                 Style="{StaticResource SaveButtonTheme}"
