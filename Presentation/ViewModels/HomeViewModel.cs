@@ -37,6 +37,7 @@ namespace Presentation.ViewModels
          _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Birgit" }));
 
          CreateProfileCommand = new CreateCommand(navigationControl);
+         EditProfileCommand = new EditCommand(navigationControl);
       }
    }
 }
