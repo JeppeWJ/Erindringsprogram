@@ -12,6 +12,12 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="Hans lotte"
+                   Margin="50,40,0,0"
+                   FontSize="32"/>
+
         <Grid Grid.Column="0" Margin="0,0,0,50">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

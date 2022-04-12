@@ -8,5 +8,6 @@ namespace Presentation.ViewModels
 {
    class EditingViewModel : ViewModelBase
    {
+      
    }
 }
