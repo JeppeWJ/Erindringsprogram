@@ -37,29 +37,12 @@ namespace DataAccess_2
             NotifyObservers(blob, fileType, personID);
         }
 
-        private void LoadImage(bool fileType, uint personID) //Click on the load button
-        {
-            BitmapImage image;
-            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
 
-            openFile.FileName = "";
 
-            openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
 
-            if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
-            {
-                imagePath = openFile.FileName; // Set the filename path for the image
-                image = new BitmapImage(new Uri(openFile.FileName)); //Adding and showing the image to the image control in the WPF
-                var imageBA = ImageToByte(image);
-                ManageFile(imageBA, fileType, personID);
-            }
-            
-           
-        }
-        
-  
 
-        private void UploadImageOrAudio(bool fileType, uint personID) // Upload the sound to the database
+
+        private void UploadImageOrAudioToDB(bool fileType, uint personID) // Upload the sound to the database
         {
             string filetype;
             if (fileType == true)
@@ -71,8 +54,46 @@ namespace DataAccess_2
                 filetype = "Image";
             }
 
-            SqlConnection connection = new SqlConnection(connString);
+            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
 
+
+            openFile.FileName = $"{filetype}";
+
+
+            if (fileType == true)
+            {
+                openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
+
+                if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                {
+                    audioPath = openFile.FileName; // Set the filename path for the audio
+
+                    var soundFileBA = File.ReadAllBytes(audioPath);
+
+                    ManageFile(soundFileBA, fileType, personID);
+                }
+            }
+            else
+            {
+                BitmapImage image;
+
+
+                openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
+
+                if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                {
+                    imagePath = openFile.FileName; // Set the filename path for the image
+                    image = new BitmapImage(new Uri(openFile.FileName)); //Adding and showing the image to the image control in the WPF
+                    var imageBA = ImageToByte(image);
+
+                    ManageFile(imageBA, fileType, personID);
+                }
+            }
+
+
+            
+
+            SqlConnection connection = new SqlConnection(connString);
             connection.Open(); // Open connection to the database
 
             SqlCommand command = connection.CreateCommand();
@@ -82,11 +103,11 @@ namespace DataAccess_2
 
 
             //query
-            command.CommandText = $"UPDATE Test_table SET({filetype} = {data}) WHERE(PersonID = {personID})"; //Insert commandtext to database
+            command.CommandText = $"UPDATE Test_table SET {filetype} = {data} WHERE PersonID = {personID}"; //Insert commandtext to database
 
             if (fileType)
             {
-                if (command.ExecuteNonQuery() > 0) //Check if the command get executed to the database
+                if (command.ExecuteNonQuery() > 0) 
                 {
                     MessageBox.Show("Billedet blev uploadet til database");
                 }
@@ -97,7 +118,7 @@ namespace DataAccess_2
             }
             else
             {
-                if (command.ExecuteNonQuery() > 0) //Check if the command get executed to the database
+                if (command.ExecuteNonQuery() > 0) 
                 {
                     MessageBox.Show("Lyden blev uploadet til database");
                 }
@@ -106,16 +127,13 @@ namespace DataAccess_2
                     MessageBox.Show("Lyden blev ikke uploadet til database");
                 }
             }
-
             
-
-            connection.Close(); // Close the connection from the database
-
+            connection.Close(); 
         }
 
 
 
-        private string GetImageOrAudio(bool fileType, uint personID) // Receive the sound from database
+        private string GetImageOrAudioFromDB(bool fileType, uint personID) // Receive the sound from database
         {
             string filetype; 
             if (fileType == true)
@@ -204,21 +222,7 @@ namespace DataAccess_2
         //    //https://www.youtube.com/watch?v=HIv1_P98Ne8&list=LL&index=2&t=182s
         //}
 
-        //private void AudioPlay() // Chose the audio file from the computer
-        //{
-        //    OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
 
-        //    openFile.FileName = "";
-
-        //    openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
-
-        //    if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
-        //    {
-        //        audioPath = openFile.FileName; // Set the filename path for the audio
-        //        mediaPlayer.Open(new Uri(audioPath)); //Open the audio from the filepath with the mediaplayer
-        //        mediaPlayer.Play(); // Play the audio with mediaplayer
-        //    }
-        //}
         //private void AddImage(bool fileType, uint personID) //Click on the add button
         //{
         //    // Connection string to the database
@@ -252,6 +256,16 @@ namespace DataAccess_2
         //    connection.Close(); // Close connection to the database
 
         //}
+        //private void LoadImageFile(bool fileType, uint personID) //Click on the load button
+        //{
 
+
+
+        //}
+        //private void AudioPlay() // Chose the audio file from the computer
+        //{
+        //    mediaPlayer.Open(new Uri(audioPath)); //Open the audio from the filepath with the mediaplayer
+        //    mediaPlayer.Play(); // Play the audio with mediaplayer
+        //}
     }
 }
