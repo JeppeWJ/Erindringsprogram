@@ -12,18 +12,76 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DataAccess_2;
+using DataAccessLayer;
 
 namespace Presentation
 {
-   /// <summary>
-   /// Interaction logic for MainWindow.xaml
-   /// </summary>
-   public partial class MainWindow : Window 
+    public interface IWindow
+    {
+        void UpdateImages(List<PersonsDTO> personsList);
+    }
+
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : IWindow 
    {
       public MainWindow()
       {
          InitializeComponent();
-      }
-   }
+         dataAccessObserver = new DataControl(DataAccess);
+         //dataAccessObserver.Window = this;
+        }
+
+
+
+
+
+
+                                                            //todo Implement
+        DataControl dataAccessObserver { get; set; }
+      DataAccess DataAccess = new DataAccess();
+      private MediaPlayer mediaPlayer = new MediaPlayer();
+
+        public void UpdateImages(List<PersonsDTO> personsList)
+        {
+            throw new NotImplementedException();
+        }
+        //private void uploadButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bool fileType;
+        //    if (SoundRB.IsChecked == true)
+        //    {
+        //        fileType = true;
+        //    }
+        //    else
+        //    {
+        //        fileType = false;
+        //    }
+
+        //    uint personID = Convert.ToUInt32(PersonIDTextBox.Text);
+
+        //    DataAccess.UploadImageOrAudioToDB(fileType, personID);
+        //}
+
+        //private void downLoadButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    bool fileType;
+        //    if (SoundRB.IsChecked == true)
+        //    {
+        //        fileType = true;
+        //    }
+        //    else
+        //    {
+        //        fileType = false;
+        //    }
+
+        //    uint personID = Convert.ToUInt32(PersonIDTextBox.Text);
+
+        //    DataAccess.GetImageOrAudioFromDB(fileType, personID);
+        //}
+
+
+
+    }
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic 2.0", "Logic 2.0\Logic 2.0.csproj", "{CC6F9F5C-0106-41D1-A983-9C6E1B816768}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccess 2.0\DataAccessLayer.csproj", "{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CC6F9F5C-0106-41D1-A983-9C6E1B816768}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC6F9F5C-0106-41D1-A983-9C6E1B816768}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC6F9F5C-0106-41D1-A983-9C6E1B816768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0717D348-21A4-4DB5-A95C-2DEC83BE8D9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

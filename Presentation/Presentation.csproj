@@ -61,6 +61,7 @@
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigationControl.cs" />
     <Compile Include="DataControl.cs" />
+    <Compile Include="PersonsDTO.cs" />
     <Compile Include="ViewModels\CreateProfileViewModel.cs" />
     <Compile Include="ViewModels\EditingViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -161,6 +162,10 @@
     <Resource Include="Images\Billede2.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccess 2.0\DataAccessLayer.csproj">
+      <Project>{0717d348-21a4-4db5-a95c-2dec83be8d9a}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic 2.0\Logic 2.0.csproj">
       <Project>{cc6f9f5c-0106-41d1-a983-9c6e1b816768}</Project>
       <Name>Logic 2.0</Name>
