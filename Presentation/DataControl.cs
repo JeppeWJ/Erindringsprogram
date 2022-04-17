@@ -9,7 +9,7 @@ namespace Presentation
 {
     class DataControl : IDataAccessObserver
     {
-        byte[] Blob;
+        private byte[] Blob;
 
 
         public DataControl(DataAccess dataAccess)
@@ -24,6 +24,9 @@ namespace Presentation
             int length = blob.Length;
             Blob = new byte[length];
             Blob = blob;
+
+
+
         }
     }
 }

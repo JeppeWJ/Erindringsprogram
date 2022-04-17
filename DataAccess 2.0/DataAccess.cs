@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 
-namespace DataAccess_2
+
+namespace DataAccessLayer
 {
 
     public class DataAccess : DataAccessSubject
@@ -22,14 +23,21 @@ namespace DataAccess_2
         private string imagePath { get; set; }
         public string audioPath { get; set; }
         private SqlDataReader dataReader;
-        private byte[] output;
-        //private MediaPlayer mediaPlayer = new MediaPlayer();
 
-        public static byte[] ImageToByte(BitmapImage img)
+        
+
+        public static byte[] ImageToByte(BitmapImage bitmapImage)
         {
-            ImageConverter converter = new ImageConverter();
-            return (byte[])converter.ConvertTo(img, typeof(byte[]));
-        }
+            using (MemoryStream outStream = new MemoryStream())
+            { 
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create(bitmapImage));
+                enc.Save(outStream);
+                System.Drawing.Bitmap img = new System.Drawing.Bitmap(outStream);
+                ImageConverter converter = new ImageConverter();
+                return (byte[])converter.ConvertTo(img, typeof(byte[]));
+            }
+        } //System.InvalidCastException: 'Unable to cast object of type 'System.Windows.Media.Imaging.BitmapImage' to type 'System.Drawing.Image'.'
 
 
         public void ManageFile(byte[] blob, bool fileType, uint personID)
@@ -42,14 +50,16 @@ namespace DataAccess_2
 
 
 
-        private void UploadImageOrAudioToDB(bool fileType, uint personID) // Upload the sound to the database
+        public void UploadImageOrAudioToDB(bool fileType, uint personID) // Upload the sound to the database
         {
+            byte[] data = new byte[] { }; 
             string filetype;
-            if (fileType == true)
+
+            if (fileType)
             {
                 filetype = "Sound";
             }
-            else
+            else 
             {
                 filetype = "Image";
             }
@@ -60,7 +70,7 @@ namespace DataAccess_2
             openFile.FileName = $"{filetype}";
 
 
-            if (fileType == true)
+            if (filetype == "Sound")
             {
                 openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
 
@@ -71,22 +81,23 @@ namespace DataAccess_2
                     var soundFileBA = File.ReadAllBytes(audioPath);
 
                     ManageFile(soundFileBA, fileType, personID);
+                    data = soundFileBA;
                 }
             }
-            else
+            else if (filetype == "Image")
             {
-                BitmapImage image;
-
-
                 openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
 
                 if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
                 {
                     imagePath = openFile.FileName; // Set the filename path for the image
-                    image = new BitmapImage(new Uri(openFile.FileName)); //Adding and showing the image to the image control in the WPF
-                    var imageBA = ImageToByte(image);
+
+                    var imageBA = File.ReadAllBytes(imagePath);
+                    //image = new BitmapImage(new Uri(openFile.FileName)); //Adding and showing the image to the image control in the WPF
+                    //var imageBA = ImageToByte(image);
 
                     ManageFile(imageBA, fileType, personID);
+                    data = imageBA;
                 }
             }
 
@@ -98,43 +109,42 @@ namespace DataAccess_2
 
             SqlCommand command = connection.CreateCommand();
 
-            // Convert sound to byte array 
-            byte[] data = File.ReadAllBytes(audioPath); //Reads the content of the audio file and converting it to byte array
-
+            
 
             //query
             command.CommandText = $"UPDATE Test_table SET {filetype} = {data} WHERE PersonID = {personID}"; //Insert commandtext to database
 
-            if (fileType)
-            {
-                if (command.ExecuteNonQuery() > 0) 
-                {
-                    MessageBox.Show("Billedet blev uploadet til database");
-                }
-                else
-                {
-                    MessageBox.Show("Billedet blev ikke uploadet til database");
-                }
-            }
-            else
-            {
-                if (command.ExecuteNonQuery() > 0) 
-                {
-                    MessageBox.Show("Lyden blev uploadet til database");
-                }
-                else
-                {
-                    MessageBox.Show("Lyden blev ikke uploadet til database");
-                }
-            }
-            
+            //if (fileType)
+            //{
+            //    if (/*command.ExecuteNonQuery() > 0*/     ) 
+            //    {
+            //        MessageBox.Show("Billedet blev uploadet til database");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Billedet blev ikke uploadet til database");
+            //    }
+            //}
+            //else
+            //{
+            //    if (/*command.ExecuteNonQuery() > 0*/) 
+            //    {
+            MessageBox.Show("Lyden blev uploadet til database");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Lyden blev ikke uploadet til database");
+            //    }
+            //}
+
             connection.Close(); 
         }
 
 
 
-        private string GetImageOrAudioFromDB(bool fileType, uint personID) // Receive the sound from database
+        public string GetImageOrAudioFromDB(bool fileType, uint personID) // Receive the sound from database
         {
+            byte[] output = new byte[] { };
             string filetype; 
             if (fileType == true)
             {
@@ -149,9 +159,7 @@ namespace DataAccess_2
             SqlConnection connection = new SqlConnection(connString);
             connection.Open(); // Open connection to database
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"Select {filetype} from Test_table WHERE PersonID={personID}"; // Getting the sound from PersonID 5
-
-
+            command.CommandText = $"Select {filetype} from Test_table WHERE PersonID={personID}";
             dataReader = command.ExecuteReader(); // Execute the command text to the database
 
 
@@ -160,10 +168,11 @@ namespace DataAccess_2
                 output = (byte[])dataReader.GetValue(0);
             }
 
-            connection.Close(); // Close connection
+            connection.Close(); 
 
             var path = @"file.mp3"; // Specifying a file name
-            File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
+            //File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
+
 
             string url = @".\bin\Debug\file.mp3";
 

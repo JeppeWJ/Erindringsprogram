@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DataAccess_2._0;
+using DataAccess_2;
 
 namespace Presentation
 {
