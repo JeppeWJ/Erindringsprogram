@@ -129,7 +129,7 @@ namespace DataAccessLayer
             //{
             //    if (/*command.ExecuteNonQuery() > 0*/) 
             //    {
-            MessageBox.Show("Lyden blev uploadet til database");
+            //MessageBox.Show("Lyden blev uploadet til database");
             //    }
             //    else
             //    {
@@ -171,7 +171,7 @@ namespace DataAccessLayer
             connection.Close(); 
 
             var path = @"file.mp3"; // Specifying a file name
-            //File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
+            File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
 
 
             string url = @".\bin\Debug\file.mp3";

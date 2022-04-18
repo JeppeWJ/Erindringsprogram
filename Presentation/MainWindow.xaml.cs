@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,10 +44,63 @@ namespace Presentation
       DataAccess DataAccess = new DataAccess();
       private MediaPlayer mediaPlayer = new MediaPlayer();
 
-        public void UpdateImages(List<PersonsDTO> personsList)
-        {
-            throw new NotImplementedException();
-        }
+
+      public void UpdateImages(List<PersonsDTO> personsList)
+      {
+          int i = 0;
+          foreach (var VARIABLE in personsList)
+          {
+              i++;
+              Stream streamObj = new MemoryStream(VARIABLE.Image);
+              BitmapImage bitObj = new BitmapImage();
+              bitObj.BeginInit();
+              bitObj.CacheOption = BitmapCacheOption.OnLoad;
+              bitObj.StreamSource = streamObj;
+              bitObj.EndInit();
+
+
+              //if (i == 1)
+              //{
+              //    Image1.Source = bitObj;
+              //}
+              //else if (i == 2)
+              //{
+              //    Image2.Source = bitObj;
+              //}
+              //else if (i == 3)
+              //{
+              //    Image3.Source = bitObj;
+              //}
+              //else if (i == 4)
+              //{
+              //    Image4.Source = bitObj;
+              //}
+              //else if (i == 5)
+              //{
+              //    Image5.Source = bitObj;
+              //}
+              //else if (i == 6)
+              //{
+              //    Image6.Source = bitObj;
+              //}
+              //else if (i == 7)
+              //{
+              //    Image7.Source = bitObj;
+              //}
+              //else if (i == 8)
+              //{
+              //    Image8.Source = bitObj;
+              //}
+              //else if (i >= 9)
+              //{
+              //    break;
+              //}
+
+          }
+
+      }
+
+
         //private void uploadButton_Click(object sender, RoutedEventArgs e)
         //{
         //    bool fileType;

@@ -17,7 +17,7 @@ namespace Presentation
         private uint PersonID;
 
         private List<PersonsDTO> PersonsList;
-        private PersonsDTO EmptyPersonsDTO = new PersonsDTO(0, "", "", new byte[] { }, new byte[] { });
+        private PersonsDTO EmptyPersonsDTO = new PersonsDTO(0, "", "", new byte[1] { 1 }, new byte[1] { 1 });
 
         public DataControl(DataAccess dataAccess)
         {
@@ -41,13 +41,26 @@ namespace Presentation
             FileType = fileType;
             PersonID = personID;
 
-            //possible array rezise problem
 
-            var obj = PersonsList.FirstOrDefault(x => x.PersonID == personID);
-            if (obj != null && fileType == true) obj.SoundFile = blob;
-            else if (obj != null && fileType == false) obj.Image = blob;
+            PersonsDTO personDto = PersonsList.Find(PersonDTO => PersonDTO.PersonID == personID);
 
-            ImagesToGUI(PersonsList);
+            personDto.Image = blob;
+
+
+            PersonsList.Insert(Convert.ToInt32(personID - 1), personDto);
+
+
+
+
+            //var obj = PersonsList.FirstOrDefault(PersonDTO => PersonDTO.PersonID == personID);
+            //if (obj != null && fileType == true)  obj.SoundFile = blob;
+            //else if (obj != null && fileType == false) obj.Image = blob;
+
+            if (fileType)
+            {
+                ImagesToGUI(PersonsList);
+            }
+
         }
 
 
@@ -60,6 +73,4 @@ namespace Presentation
 
 
     }
-}
-
 }
