@@ -32,9 +32,9 @@ namespace Presentation.ViewModels
       public HomeViewModel(NavigationControl navigationControl)
       {
          _relatives = new ObservableCollection<RelativeViewModel>();
-         _relatives.Add(new RelativeViewModel(new RelativeDTO(){Name = "Hans"}));
-         _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Lotte" }));
-         _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Birgit" }));
+         //_relatives.Add(new RelativeViewModel(new RelativeDTO()));
+         _relatives.Add(new RelativeViewModel(new RelativeDTO("DTO")));
+         _relatives.Add(new RelativeViewModel(new RelativeDTO("Mette")));
 
          CreateProfileCommand = new CreateCommand(navigationControl);
          EditProfileCommand = new EditCommand(navigationControl);
