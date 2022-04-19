@@ -8,18 +8,19 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch"
-                              Background="{TemplateBinding Background}"
-                              Height="30"
-                              Width="150">
+                        <Border CornerRadius="20"
+                                Background="{TemplateBinding Background}"
+                                Width="140"
+                                Height="35">
+                            <Grid>
 
-                            <TextBlock Text="{TemplateBinding Content}"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       FontFamily="Verdana"
-                                       FontSize="16"/>
-                        </Grid>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontFamily="Verdana"
+                                           FontSize="16"/>
+                            </Grid>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

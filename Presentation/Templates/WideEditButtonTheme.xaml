@@ -7,18 +7,18 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid VerticalAlignment="Stretch"
-                              HorizontalAlignment="Stretch"
-                              Background="{TemplateBinding Background}"
-                              Height="44"
-                              Width="154">
-
-                            <TextBlock Text="{TemplateBinding Content}"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       FontFamily="Verdana"
-                                       FontSize="16"/>
-                        </Grid>
+                        <Border CornerRadius="20"
+                                Background="{TemplateBinding Background}"
+                                Height="40"
+                                Width="140">
+                            <Grid>
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontFamily="Verdana"
+                                           FontSize="16"/>
+                            </Grid>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

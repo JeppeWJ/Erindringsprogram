@@ -9,11 +9,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid Background="White">
-        <Rectangle Fill="#FFFFEAE9" HorizontalAlignment="Left" Height="287" Margin="0,119,0,0" Stroke="#FFEEEFEA" VerticalAlignment="Top" Width="800"/>
+        <Rectangle Fill="#FFFFEAE9" HorizontalAlignment="Left" Height="331" Margin="0,119,0,0" Stroke="#FFEEEFEA" VerticalAlignment="Top" Width="800"/>
 
-        <Label Content="Login til erindringsprogrammet" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="30" FontFamily="Calisto MT" Width="426" Foreground="#FFFF0039" Height="53"/>
-        <Label Content="Indtast brugernavn:" HorizontalAlignment="Left" Margin="77,137,0,0" VerticalAlignment="Top" Foreground="#FF151616" FontSize="18" FontFamily="Calisto MT"/>
-        <Label Content="Indtast adgangskode:" HorizontalAlignment="Left" Margin="77,218,0,0" VerticalAlignment="Top" Foreground="#FF212222" FontSize="18" FontFamily="Calisto MT"/>
+        <Label Content="Login til erindringsprogrammet" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="30" FontFamily="Times New Roman" Width="426" Foreground="#FFFF0039" Height="53"/>
+        <Label Content="Indtast brugernavn:" HorizontalAlignment="Left" Margin="77,137,0,0" VerticalAlignment="Top" Foreground="#FF151616" FontSize="16" FontFamily="Verdana"/>
+        <Label Content="Indtast adgangskode:" HorizontalAlignment="Left" Margin="77,218,0,0" VerticalAlignment="Top" Foreground="#FF212222" FontSize="16" FontFamily="Verdana"/>
         <Image HorizontalAlignment="Left" Height="253" Margin="391,137,0,0" VerticalAlignment="Top" Width="383" Source="../Images/Billede2.png" RenderTransformOrigin="0.667,0.586"/>
         
         <Button Content="Login"
