@@ -8,8 +8,13 @@ namespace Logic_2._0.RelativeManagerClasses
 {
    public class RelativeDTO
    {
-      public string Name;
-      public string PictureString;
-      public Array[] AudioFile;
-   }
+       public string FirstName;
+
+       public RelativeDTO(string firstname)
+       {
+           FirstName = firstname;
+       }
+        //public string PictureString;
+        //public Array[] AudioFile;
+    }
 }
