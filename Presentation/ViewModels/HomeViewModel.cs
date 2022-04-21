@@ -34,6 +34,9 @@ namespace Presentation.ViewModels
          _relatives.Add(new RelativeViewModel(new RelativeDTO(){Name = "Hans"}));
          _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Lotte" }));
          _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Birgit" }));
-      }
+         _relatives.Add(new RelativeViewModel(new RelativeDTO() { PictureString = "1" }));
+         _relatives.Add(new RelativeViewModel(new RelativeDTO() { PictureString = "2" }));
+         _relatives.Add(new RelativeViewModel(new RelativeDTO() { PictureString = "3" }));
+        }
    }
 }

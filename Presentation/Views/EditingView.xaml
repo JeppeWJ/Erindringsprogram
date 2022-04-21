@@ -47,6 +47,8 @@
                     Style="{StaticResource BackButtonTheme}"/>
         </Grid>
         <Label Content="Rediger profil" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Calisto MT" Width="220" Foreground="#FFFF0039" Height="41"/>
+        <Image Grid.Column="1" 
+               Source="{Binding }"/>
 
     </Grid>
 </UserControl>
