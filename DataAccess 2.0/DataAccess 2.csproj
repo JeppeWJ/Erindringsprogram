@@ -49,5 +49,11 @@
     <Compile Include="IDataAccessObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logic 2.0\Logic 2.0.csproj">
+      <Project>{CC6F9F5C-0106-41D1-A983-9C6E1B816768}</Project>
+      <Name>Logic 2.0</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

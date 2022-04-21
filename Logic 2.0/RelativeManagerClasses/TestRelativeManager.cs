@@ -10,6 +10,7 @@ namespace Logic_2._0.RelativeManagerClasses
    {
       public List<RelativeDTO> Relatives { get; set; }
 
+
       public TestRelativeManager()
       {
          Relatives = new List<RelativeDTO>();
