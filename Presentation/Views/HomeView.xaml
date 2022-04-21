@@ -42,19 +42,19 @@
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
                    Text="Søg i profiler"
-                   FontSize="20"
-                   FontFamily="Calisto MT"
+                   FontSize="16"
+                   FontFamily="Verdana"
                    Foreground="#FF464645"
-                   Margin="69,0,206,45"
+                   Margin="74,0,196,44.667"
                    VerticalAlignment="Bottom"/>
 
         <TextBlock Grid.Row="0" 
                    Grid.Column="0"
                    Foreground="#FFFF0039"
                    FontSize="36"
-                   FontFamily="Calisto MT"
+                   FontFamily="Times New Roman"
                    Text="Erindringsprogram"
-                   Margin="68,42,0,0" Height="58" VerticalAlignment="Top"/>
+                   Margin="74,49,375,0" Height="58" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
         <Image Grid.Row="0"
                Grid.Column="1"
@@ -99,19 +99,18 @@
         <Button Content="Opret profil"
                 Style="{StaticResource WideEditButtonTheme}"
                 HorizontalAlignment="Left"
-                Margin="0,40,0,0"
+                Margin="23,39.333,0,0"
                 VerticalAlignment="Top"
                 FontFamily="Verdana"
                 FontSize="16"
-                Width="154"
-                Grid.Column="1"
+                Width="140"
                 Grid.Row="1"
-                Command="{Binding CreateProfileCommand}"/>
+                Command="{Binding CreateProfileCommand}" Grid.Column="1"/>
 
         <Button Content="Rediger profil"
                 Style="{StaticResource WideEditButtonTheme}"
                 HorizontalAlignment="Left"
-                Margin="0,192,0,0"
+                Margin="23,199,0,0"
                 VerticalAlignment="Top"
                 FontFamily="Verdana"
                 FontSize="16"

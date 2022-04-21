@@ -12,7 +12,7 @@
                HorizontalAlignment="Stretch"
                Margin="73,63,504,334"
                FontSize="24"
-               FontFamily="Calisto MT"
+               FontFamily="Times New Roman"
                Foreground="#FFFF0039"
                Height="53"/>
 
@@ -44,28 +44,24 @@
 
         <Button Content="Upload billede"
                 Style="{StaticResource EditButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="520,174,130,246" Background="#FFF4C6B9"/>
+                Margin="520,174,130,241" Background="#FFF4C6B9"/>
 
         <Button Content="Upload lydfil"
                 Style="{StaticResource EditButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="520,231,130,189"/>
+                Margin="520,228,130,187"/>
 
         <Button Content="Gem profil"
                 Style="{StaticResource SaveButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="444,347,55,74"/>
+                Margin="520,347,130,59"/>
 
         <Button Content="Tilbage"
                 Style="{StaticResource BackButtonTheme}"
-                Height="30"
                 Width="150"
                 Command="{Binding BackCommand}"
-                Margin="80,346,570,74"/>
+                Margin="73,347,577,59"/>
 
 
     </Grid>
