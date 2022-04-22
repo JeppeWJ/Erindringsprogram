@@ -54,13 +54,10 @@ namespace Presentation.ViewModels
                 dto.FirstName = dataRow["FirstName"].ToString();
                 _relatives.Add(new RelativeViewModel(dto));
            }
-           
-            //_relatives.Add(new RelativeViewModel(new RelativeDTO()));
-            // _relatives.Add(new RelativeViewModel(new RelativeDTO()));
-            //_relatives.Add(new RelativeViewModel(new RelativeDTO()));
+            // https://www.youtube.com/watch?v=DF_I628kNvk
 
-         CreateProfileCommand = new CreateCommand(navigationControl);
-         EditProfileCommand = new EditCommand(navigationControl);
+           CreateProfileCommand = new CreateCommand(navigationControl);
+           EditProfileCommand = new EditCommand(navigationControl);
       }
    }
 }
