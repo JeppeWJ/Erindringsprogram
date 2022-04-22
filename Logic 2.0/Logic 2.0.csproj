@@ -52,11 +52,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccess 2.0\DataAccess 2.csproj">
-      <Project>{0717d348-21a4-4db5-a95c-2dec83be8d9a}</Project>
-      <Name>DataAccess 2</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
