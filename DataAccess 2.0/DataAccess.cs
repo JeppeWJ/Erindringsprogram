@@ -26,32 +26,6 @@ namespace DataAccess_2
       private MediaPlayer mediaPlayer = new MediaPlayer();
       private string _name;
 
-      public string GetPersonName()
-      {
-
-          // Connection string to the database
-          string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; //Connection string for the database
-
-          SqlConnection connection = new SqlConnection(connString);
-
-          connection.Open(); // Open connection to database
-
-          SqlCommand command = connection.CreateCommand();
-
-          command.CommandText = "SELECT FirstName FROM Test_table"; // Getting all the FirstNames from the database
-
-          dataReader = command.ExecuteReader(); // Execute the command text to the database
-
-          while (dataReader.Read()) //Reading from the database and converting the data to byte array
-          {
-              _name = ((string)dataReader.GetValue(0));
-          }
-
-          connection.Close(); // Close connection
-
-          return _name;
-      }
-
 
       public void ManageFile(byte[] blob, bool fileType, uint personID)
       {
@@ -231,10 +205,10 @@ namespace DataAccess_2
       }
 
 
-      public void Update(byte[] blob)
-      {
+      //public void Update(byte[] blob)
+      //{
 
-      }
+      //}
 
 
    }

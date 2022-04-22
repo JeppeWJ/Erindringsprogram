@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,12 +31,33 @@ namespace Presentation.ViewModels
          }
       }
 
-      public HomeViewModel(NavigationControl navigationControl)
-      {
-         _relatives = new ObservableCollection<RelativeViewModel>();
-         //_relatives.Add(new RelativeViewModel(new RelativeDTO()));
-         _relatives.Add(new RelativeViewModel(new RelativeDTO("DTO")));
-         _relatives.Add(new RelativeViewModel(new RelativeDTO("Mette")));
+       private string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+       public HomeViewModel(NavigationControl navigationControl)
+       {
+           DataSet ds = new DataSet();
+           using (SqlConnection conn = new SqlConnection(connString))
+           {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = new SqlCommand("SELECT * FROM Test_table", conn);
+                dataAdapter.Fill(ds);
+           }
+
+           DataTable dt = new DataTable();
+           dt = ds.Tables[0];
+
+           _relatives = new ObservableCollection<RelativeViewModel>();
+           for (int i = 0; i < dt.Rows.Count; i++)
+           {
+                DataRow dataRow = dt.NewRow();
+                dataRow = dt.Rows[i];
+                RelativeDTO dto = new RelativeDTO();
+                dto.FirstName = dataRow["FirstName"].ToString();
+                _relatives.Add(new RelativeViewModel(dto));
+           }
+           
+            //_relatives.Add(new RelativeViewModel(new RelativeDTO()));
+            // _relatives.Add(new RelativeViewModel(new RelativeDTO()));
+            //_relatives.Add(new RelativeViewModel(new RelativeDTO()));
 
          CreateProfileCommand = new CreateCommand(navigationControl);
          EditProfileCommand = new EditCommand(navigationControl);

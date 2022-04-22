@@ -11,15 +11,11 @@ namespace Logic_2._0.RelativeManagerClasses
    {
       public List<RelativeDTO> Relatives { get; set; }
       private DataAccess _dataAccess;
-<<<<<<< HEAD
-
-=======
->>>>>>> SM005-feature-LinkComboBoxWithDatabase
 
       public TestRelativeManager()
       {
           Relatives = new List<RelativeDTO>();
-          Relatives.Add(new RelativeDTO(_dataAccess.GetPersonName()));
+          //Relatives.Add(new RelativeDTO(_dataAccess.GetPersonName()));
       }
 
    }
