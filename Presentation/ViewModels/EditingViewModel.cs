@@ -19,6 +19,7 @@ namespace Presentation.ViewModels
       {
          BackCommand = new ToHomeViewCommand(navigationControl);
          _relative = relative;
+         
          RelativeName = _relative.Name;
       }
    }
