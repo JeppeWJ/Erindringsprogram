@@ -12,10 +12,16 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding RelativeName}"
+                   Margin="50,40,0,0"
+                   FontSize="32"/>
+
         <Grid Grid.Column="0" Margin="0,0,0,50">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
@@ -25,28 +31,35 @@
 
             <Button Content="Vælg billede" 
                     Style="{StaticResource EditButtonTheme}"
-                    BorderBrush="#FFF4C6B9"
-                    Grid.Row="1"/>
+                    Width="140"
+                    Height="35"
+                    BorderBrush="#FFF4C6B9" Margin="79,146,81.667,19" Grid.RowSpan="2"/>
 
-            <Button Grid.Row="2"
+            <Button Grid.Row="1"
                     Content="Vælg lydfil"
+                    Width="140"
+                    Height="35"
                     Style="{StaticResource EditButtonTheme}"
-                    BorderBrush="#FFF4C6B9"/>
+                    BorderBrush="#FFF4C6B9" Margin="79,65,81.667,10" Grid.RowSpan="2"/>
 
             <Button Grid.Row="3"
                     Content="Slet profil"
+                    Width="140"
+                    Height="35"
                     Style="{StaticResource EditButtonTheme}"
                     BorderBrush="#FFF4C6B9"
-                    Foreground="#FFFF0039"/>
+                    Foreground="#FFFF0039" Margin="79,5,81.667,0"/>
 
-            <Button Grid.Row="5"
+            <Button Grid.Row="4"
                     Content="Gem profil"
-                    Style="{StaticResource SaveButtonTheme}"/>
+                    Style="{StaticResource SaveButtonTheme}" Margin="0,35,-0.333,5" Grid.RowSpan="2"/>
             <Button Grid.Row="6"
                     Content="Tilbage"
-                    Style="{StaticResource BackButtonTheme}"/>
+                    Style="{StaticResource BackButtonTheme}"
+                    Command="{Binding BackCommand}" Margin="0,0,-0.333,0"/>
         </Grid>
-        <Label Content="Rediger profil" HorizontalAlignment="Left" Margin="74,49,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Calisto MT" Width="220" Foreground="#FFFF0039" Height="41"/>
+        <Label Content="Rediger profil" HorizontalAlignment="Left" Margin="76,63,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Times New Roman" Width="217" Foreground="#FFFF0039" Height="41"/>
+        <Rectangle Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="249" Margin="155.333,63,-369.667,0" Stroke="Black" VerticalAlignment="Top" Width="269"/>
 
     </Grid>
 </UserControl>

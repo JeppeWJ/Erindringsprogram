@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Logic_2._0.RelativeManagerClasses;
+using Presentation.Commands;
 
 namespace Presentation.ViewModels
 {
@@ -16,9 +19,9 @@ namespace Presentation.ViewModels
       public ICommand EditProfileCommand { get; }
       public ICommand CreateProfileCommand { get; }
 
-      private string _selectedProfile;
+      private RelativeViewModel _selectedProfile;
 
-      public string SelectedProfile
+      public RelativeViewModel SelectedProfile
       {
          get { return _selectedProfile; }
          set
@@ -28,12 +31,33 @@ namespace Presentation.ViewModels
          }
       }
 
-      public HomeViewModel()
-      {
-         _relatives = new ObservableCollection<RelativeViewModel>();
-         _relatives.Add(new RelativeViewModel(new RelativeDTO(){Name = "Hans"}));
-         _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Lotte" }));
-         _relatives.Add(new RelativeViewModel(new RelativeDTO() { Name = "Birgit" }));
+       private string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+       public HomeViewModel(NavigationControl navigationControl)
+       {
+           DataSet ds = new DataSet();
+           using (SqlConnection conn = new SqlConnection(connString))
+           {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = new SqlCommand("SELECT * FROM Test_table", conn);
+                dataAdapter.Fill(ds);
+           }
+
+           DataTable dt = new DataTable();
+           dt = ds.Tables[0];
+
+           _relatives = new ObservableCollection<RelativeViewModel>();
+           for (int i = 0; i < dt.Rows.Count; i++)
+           {
+                DataRow dataRow = dt.NewRow();
+                dataRow = dt.Rows[i];
+                RelativeDTO dto = new RelativeDTO();
+                dto.FirstName = dataRow["FirstName"].ToString();
+                _relatives.Add(new RelativeViewModel(dto));
+           }
+            // https://www.youtube.com/watch?v=DF_I628kNvk
+
+           CreateProfileCommand = new CreateCommand(navigationControl);
+           EditProfileCommand = new EditCommand(navigationControl);
       }
    }
 }

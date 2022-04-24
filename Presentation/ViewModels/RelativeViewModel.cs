@@ -11,9 +11,9 @@ namespace Presentation.ViewModels
    public class RelativeViewModel : ViewModelBase
    {
       private readonly RelativeDTO _relative;
-      public string Name => _relative.Name;
-      public string PictureString => _relative.PictureString;
-      public Array[] AudioFile => _relative.AudioFile;
+      public string Name => _relative.FirstName;
+      //public string PictureString => _relative.PictureString;
+      //public Array[] AudioFile => _relative.AudioFile;
 
       public RelativeViewModel(RelativeDTO relative)
       {

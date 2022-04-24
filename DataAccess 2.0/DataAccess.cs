@@ -39,11 +39,11 @@ namespace DataAccessLayer
             }
         } //System.InvalidCastException: 'Unable to cast object of type 'System.Windows.Media.Imaging.BitmapImage' to type 'System.Drawing.Image'.'
 
+      private void LoadImage() //Click on the load button
+      {
+         OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
 
-        public void ManageFile(byte[] blob, bool fileType, uint personID)
-        {
-            NotifyObservers(blob, fileType, personID);
-        }
+         openFile.FileName = "";
 
 
 

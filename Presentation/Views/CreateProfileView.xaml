@@ -10,90 +10,58 @@
         <Label Content="Opret profil"
                VerticalAlignment="Stretch"
                HorizontalAlignment="Stretch"
-               Margin="0,0,420,275"
+               Margin="73,63,504,334"
                FontSize="24"
-               FontFamily="Calisto MT"
-               Width="220"
+               FontFamily="Times New Roman"
                Foreground="#FFFF0039"
                Height="53"/>
-        
-        <TextBox Height="27"
+
+        <TextBox Height="35"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 Margin="76,136,0,279"
+                 Width="200"
+                 FontSize="14"
+                 Style="{StaticResource NameTextbox}"/>
+
+        <TextBox Height="35"
                  VerticalAlignment="Stretch"
                  HorizontalAlignment="Stretch"
-                 Margin="0, 0,488,173"
+                 Margin="76,195,554,220"
                  TextWrapping="Wrap"
-                 Text=""
-                 Width="152"/>
+                 Width="200"
+                 FontSize="14"
+                 Style="{StaticResource DateOfBirthTextbox}"/>
 
-        <TextBox Height="26"
-                 VerticalAlignment="Stretch"
-                 HorizontalAlignment="Stretch"
-                 Margin="0,0,488,58"
+        <TextBox Height="35"
+                 Margin="76,252,554,163"
                  TextWrapping="Wrap"
-                 Text=""
-                 Width="152"/>
-
-        <TextBox Height="26"
-                 Margin="0,0,488,-56"
-                 TextWrapping="Wrap"
-                 Text=""
-                 Width="152"
+                 Width="200"
+                 FontSize="14"
+                 Style="{StaticResource RelationTextbox}"
                  VerticalAlignment="Stretch"
                  HorizontalAlignment="Stretch"/>
 
-        <Label Content="Navn"
-               Margin="0,0,242,172" 
-               Height="30"
-               Width="60"
-               Foreground="#FF404040"
-               FontSize="18"
-               FontFamily="Calisto MT"
-               VerticalAlignment="Stretch"
-               HorizontalAlignment="Stretch"/>
-
-        <Label Content="Fødselsdagsdato" 
-               Margin="0,0,164,56"
-               Foreground="#FF404040"
-               FontSize="18"
-               FontFamily="Calisto MT"
-               Height="30"
-               Width="138"
-               VerticalAlignment="Stretch"
-               HorizontalAlignment="Stretch"/>
-
-        <Label Content="Relation"
-               Margin="0,58,227,0"
-               Foreground="#FF404040"
-               FontSize="18"
-               FontFamily="Calisto MT"
-               Height="30"
-               Width="75"
-               VerticalAlignment="Stretch"
-               HorizontalAlignment="Stretch"/>
-
         <Button Content="Upload billede"
                 Style="{StaticResource EditButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="444,155,55,260"/>
+                Margin="520,174,130,241" Background="#FFF4C6B9"/>
 
         <Button Content="Upload lydfil"
                 Style="{StaticResource EditButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="444,211,55,199"/>
+                Margin="520,228,130,187"/>
 
         <Button Content="Gem profil"
                 Style="{StaticResource SaveButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="444,347,55,74"/>
+                Margin="520,347,130,59"/>
 
         <Button Content="Tilbage"
                 Style="{StaticResource BackButtonTheme}"
-                Height="30"
                 Width="150"
-                Margin="80,346,570,74"/>
+                Command="{Binding BackCommand}"
+                Margin="73,347,577,59"/>
 
 
     </Grid>
