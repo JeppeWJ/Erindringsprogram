@@ -30,17 +30,10 @@ namespace Presentation
       public MainWindow()
       {
          InitializeComponent();
-         dataAccessObserver = new DataControl(DataAccess);
+         
          //dataAccessObserver.Window = this;
         }
-
-
-
-
-
-
-                                                            //todo Implement
-        DataControl dataAccessObserver { get; set; }
+        
       DataAccess DataAccess = new DataAccess();
       private MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -58,43 +51,6 @@ namespace Presentation
               bitObj.StreamSource = streamObj;
               bitObj.EndInit();
 
-
-              //if (i == 1)
-              //{
-              //    Image1.Source = bitObj;
-              //}
-              //else if (i == 2)
-              //{
-              //    Image2.Source = bitObj;
-              //}
-              //else if (i == 3)
-              //{
-              //    Image3.Source = bitObj;
-              //}
-              //else if (i == 4)
-              //{
-              //    Image4.Source = bitObj;
-              //}
-              //else if (i == 5)
-              //{
-              //    Image5.Source = bitObj;
-              //}
-              //else if (i == 6)
-              //{
-              //    Image6.Source = bitObj;
-              //}
-              //else if (i == 7)
-              //{
-              //    Image7.Source = bitObj;
-              //}
-              //else if (i == 8)
-              //{
-              //    Image8.Source = bitObj;
-              //}
-              //else if (i >= 9)
-              //{
-              //    break;
-              //}
 
           }
 

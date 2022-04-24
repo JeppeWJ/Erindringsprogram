@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using DTOs;
-using Logic_2._0.RelativeManagerClasses;
 
 namespace Presentation.ViewModels
 {

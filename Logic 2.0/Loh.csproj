@@ -7,8 +7,8 @@
     <ProjectGuid>{CC6F9F5C-0106-41D1-A983-9C6E1B816768}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Logic_2._0</RootNamespace>
-    <AssemblyName>Logic 2.0</AssemblyName>
+    <RootNamespace>LogicLayer</RootNamespace>
+    <AssemblyName>LogicLayer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,6 +45,7 @@
     <Compile Include="LoginClasses\LoginInfoDTO.cs" />
     <Compile Include="LoginClasses\TestLoginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelativeManagerClasses\RelativeManagerDataAccessOpserver.cs" />
     <Compile Include="RelativeManagerClasses\TestRelativeManager.cs" />
   </ItemGroup>
   <ItemGroup>
