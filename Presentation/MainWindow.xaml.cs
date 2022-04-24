@@ -19,7 +19,7 @@ namespace Presentation
 {
     public interface IWindow
     {
-        void UpdateImages(List<PersonsDTO> personsList);
+        
     }
 
     /// <summary>
@@ -38,21 +38,21 @@ namespace Presentation
       private MediaPlayer mediaPlayer = new MediaPlayer();
 
 
-      public void UpdateImages(List<PersonsDTO> personsList)
+      public void UpdateImages()
       {
-          int i = 0;
-          foreach (var VARIABLE in personsList)
-          {
-              i++;
-              Stream streamObj = new MemoryStream(VARIABLE.Image);
-              BitmapImage bitObj = new BitmapImage();
-              bitObj.BeginInit();
-              bitObj.CacheOption = BitmapCacheOption.OnLoad;
-              bitObj.StreamSource = streamObj;
-              bitObj.EndInit();
+          //int i = 0;
+          //foreach (var VARIABLE in )
+          //{
+          //    i++;
+          //    Stream streamObj = new MemoryStream(VARIABLE.Image);
+          //    BitmapImage bitObj = new BitmapImage();
+          //    bitObj.BeginInit();
+          //    bitObj.CacheOption = BitmapCacheOption.OnLoad;
+          //    bitObj.StreamSource = streamObj;
+          //    bitObj.EndInit();
 
 
-          }
+          //}
 
       }
 
