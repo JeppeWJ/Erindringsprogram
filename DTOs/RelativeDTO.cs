@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic_2._0.RelativeManagerClasses
+namespace DTOs
 {
    public class RelativeDTO
    {

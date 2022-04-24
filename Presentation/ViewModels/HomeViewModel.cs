@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DTOs;
 using Logic_2._0.RelativeManagerClasses;
 using Presentation.Commands;
 
