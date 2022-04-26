@@ -15,37 +15,37 @@ using Presentation.Commands;
 
 namespace Presentation.ViewModels
 {
-   class EditingViewModel : ViewModelBase
-   {
-      public ICommand BackCommand { get; }
-      public ICommand PictureButtonClickCommand { get; set; }
-      public ICommand AudioButtonClickCommand { get; set; }
-      public ICommand DeleteProfileButtonClickCommand { get; set; }
-      public ICommand SaveButtonClickCommand { get; set; }
-      private RelativeViewModel _relative;
-      public string RelativeName { get; }
-      public int RelativeID { get; }
-      private BitmapImage _DisplayImagePath;
-      private MediaPlayer mediaPlayer = new MediaPlayer();
-      private Logic _logic;
-      private Logic _info = new Logic();
-      private int personID;
+    class EditingViewModel : ViewModelBase
+    {
+        public ICommand BackCommand { get; }
+        public ICommand PictureButtonClickCommand { get; set; }
+        public ICommand AudioButtonClickCommand { get; set; }
+        public ICommand DeleteProfileButtonClickCommand { get; set; }
+        public ICommand SaveButtonClickCommand { get; set; }
+        private RelativeViewModel _relative;
+        public string RelativeName { get; }
+        public int RelativeID { get; }
+        private BitmapImage _DisplayImagePath;
+        private MediaPlayer mediaPlayer = new MediaPlayer();
+        private Logic _logic;
+        private Logic _info = new Logic();
+        private int personID;
 
         public EditingViewModel(NavigationControl navigationControl, RelativeViewModel relative)
-      {
-         BackCommand = new ToHomeViewCommand(navigationControl);
-         PictureButtonClickCommand = new RelayCommand(PictureButtonClick);
-         AudioButtonClickCommand = new RelayCommand(AudioButtonClick);
-         DeleteProfileButtonClickCommand = new RelayCommand(DeleteProfileButtonClick);
-         SaveButtonClickCommand = new RelayCommand(SaveButtonClick);
-         _relative = relative;
-         _logic = new Logic();
-         personID = new int();
+        {
+            BackCommand = new ToHomeViewCommand(navigationControl);
+            PictureButtonClickCommand = new RelayCommand(PictureButtonClick);
+            AudioButtonClickCommand = new RelayCommand(AudioButtonClick);
+            DeleteProfileButtonClickCommand = new RelayCommand(DeleteProfileButtonClick);
+            SaveButtonClickCommand = new RelayCommand(SaveButtonClick);
+            _relative = relative;
+            _logic = new Logic();
+            personID = new int();
 
-         RelativeName = _relative.Name;
-         RelativeID = _relative.ID;
+            RelativeName = _relative.Name;
+            RelativeID = _relative.ID;
 
-            //*******************************************************
+            //******************Getting image from the database for the person*************************************
             //string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; //Connection string for the database
 
             //SqlConnection connection = new SqlConnection(connString);
@@ -80,35 +80,35 @@ namespace Presentation.ViewModels
 
         private void SaveButtonClick(object obj)
         {
-            _info.Getinfo().PersonID = RelativeID;
+            _info.Getinfo().PersonID = RelativeID; //Adding personID to our relative DTO
             personID = _logic.EditProfile(_info.Getinfo());
-
         }
 
 
 
 
 
-      private void DeleteProfileButtonClick(object obj)
-      {
-          throw new NotImplementedException();
-      }
-
-      private void AudioButtonClick(object obj)
+        private void DeleteProfileButtonClick(object obj)
         {
-          OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
-
-          openFile.FileName = "";
-
-          openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
-
-          if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
-          {
-              _info.Getinfo().Audio = openFile.FileName; // Set the filename path for the audio
-              mediaPlayer.Open(new Uri(_info.Getinfo().Audio)); //Open the audio from the filepath with the mediaplayer
-              //mediaPlayer.Play(); // Play the audio with mediaplayer
-          }
+            throw new NotImplementedException();
         }
+
+        private void AudioButtonClick(object obj)
+        {
+            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
+
+            openFile.FileName = "";
+
+            openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
+
+            if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+            {
+                _info.Getinfo().Audio = openFile.FileName; // Set the filename path for the audio
+                mediaPlayer.Open(new Uri(_info.Getinfo().Audio)); //Open the audio from the filepath with the mediaplayer
+                                                                  //mediaPlayer.Play(); // Play the audio with mediaplayer
+            }
+        }
+
 
         public BitmapImage DisplayImagePath
         {
@@ -121,19 +121,19 @@ namespace Presentation.ViewModels
         }
 
         private void PictureButtonClick(object obj)
-      {
-          OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
+        {
+            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
 
-          openFile.FileName = "";
+            openFile.FileName = "";
 
-          openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
+            openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
 
-          if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
-          {
-              _info.Getinfo().Picture = openFile.FileName; // Set the filename path for the image
-              DisplayImagePath = new BitmapImage(new Uri(openFile.FileName, UriKind.Relative)); //Adding and showing the image to the image control in the WPF
+            if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+            {
+                _info.Getinfo().Picture = openFile.FileName; // Set the filename path for the image
+                DisplayImagePath = new BitmapImage(new Uri(openFile.FileName, UriKind.Relative)); //Adding and showing the image to the image control in the WPF
 
-          }
-      }
-   }
+            }
+        }
+    }
 }

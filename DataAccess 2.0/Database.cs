@@ -76,15 +76,8 @@ namespace DataAccess_2._0
             command.CommandText = $"UPDATE Test_table SET Image = @image WHERE PersonID = {person.PersonID}"; //Insert commandtext to database
             command.CommandText = $"UPDATE Test_table SET SOUND = @sound WHERE PersonID = {person.PersonID}";
 
-            person.PersonID = Convert.ToInt32(command.ExecuteScalar());
-            //if (command.ExecuteNonQuery() > 0) //Check if the command get executed to the database
-            //{
-            //    MessageBox.Show("Billedet og lyden blev uploadet til database");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Billedet og lyden blev ikke uploadet til database");
-            //}
+            command.ExecuteNonQuery();
+
 
             connection.Close(); // Close connection to the database
 
