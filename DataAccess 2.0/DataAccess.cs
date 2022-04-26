@@ -12,6 +12,7 @@ using System.Media;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
+using DTOs;
 
 
 namespace DataAccessLayer
@@ -25,8 +26,7 @@ namespace DataAccessLayer
         private string imagePath { get; set; }
         public string audioPath { get; set; }
         private SqlDataReader dataReader;
-
-
+        private IDataAccessObserver _dataAccessObserverImplementation;
 
 
         public static byte[] ImageToByte(BitmapImage bitmapImage)
@@ -85,7 +85,7 @@ namespace DataAccessLayer
 
                         var soundFileBA = File.ReadAllBytes(audioPath);
 
-                        NotifyObservers(soundFileBA, fileType, personID);
+                        //NotifyObservers(soundFileBA, fileType, personID);
                         data = soundFileBA;
                     }
                 }
@@ -103,7 +103,7 @@ namespace DataAccessLayer
                     //image = new BitmapImage(new Uri(openFile.FileName)); //Adding and showing the image to the image control in the WPF
                     //var imageBA = ImageToByte(image);
 
-                    NotifyObservers(imageBA, fileType, personID);
+                    //NotifyObservers(imageBA, fileType, personID);
                         data = imageBA;
                     }
                 }
@@ -184,7 +184,7 @@ namespace DataAccessLayer
 
                 string url = @".\bin\Debug\file.mp3";
 
-                NotifyObservers(output, fileType, personID);
+                //NotifyObservers(output, fileType, personID);
 
                 return path;
 
@@ -201,5 +201,6 @@ namespace DataAccessLayer
 
             }
 
+            
     }
 }

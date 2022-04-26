@@ -52,6 +52,7 @@ namespace Presentation.ViewModels
                 dataRow = dt.Rows[i];
                 RelativeDTO dto = new RelativeDTO();
                 dto.FirstName = dataRow["FirstName"].ToString();
+                dto.PersonID = (int)dataRow["PersonID"];
                 _relatives.Add(new RelativeViewModel(dto));
            }
             // https://www.youtube.com/watch?v=DF_I628kNvk

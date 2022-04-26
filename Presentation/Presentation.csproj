@@ -60,6 +60,7 @@
     <Compile Include="Commands\EditCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigationControl.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\ToHomeViewCommand.cs" />
     <Compile Include="ViewModels\CreateProfileViewModel.cs" />
     <Compile Include="ViewModels\EditingViewModel.cs" />

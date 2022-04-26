@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataAccessSubject.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="IDataAccessObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

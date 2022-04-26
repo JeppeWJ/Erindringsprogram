@@ -8,7 +8,7 @@ using DTOs;
 
 namespace LogicLayer.RelativeManagerClasses
 {
-    class RelativeManagerDataAccessOpserver : IDataAccessObserver
+    class RelativeManagerDataAccessOpserver //: IDataAccessObserver
     {
         public List<RelativeDTO> Relatives { get; set; }
         private byte[] Blob;

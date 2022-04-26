@@ -6,10 +6,13 @@
              xmlns:local="clr-namespace:Presentation.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300" />
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="1"
@@ -33,14 +36,16 @@
                     Style="{StaticResource EditButtonTheme}"
                     Width="140"
                     Height="35"
-                    BorderBrush="#FFF4C6B9" Margin="79,146,81.667,19" Grid.RowSpan="2"/>
+                    BorderBrush="#FFF4C6B9" Margin="79,146,81.667,19" Grid.RowSpan="2"
+                    Command="{Binding PictureButtonClickCommand}"/>
 
             <Button Grid.Row="1"
                     Content="Vælg lydfil"
                     Width="140"
                     Height="35"
                     Style="{StaticResource EditButtonTheme}"
-                    BorderBrush="#FFF4C6B9" Margin="79,65,81.667,10" Grid.RowSpan="2"/>
+                    BorderBrush="#FFF4C6B9" Margin="79,65,81.667,10" Grid.RowSpan="2"
+                    Command="{Binding AudioButtonClickCommand}"/>
 
             <Button Grid.Row="3"
                     Content="Slet profil"
@@ -48,18 +53,25 @@
                     Height="35"
                     Style="{StaticResource EditButtonTheme}"
                     BorderBrush="#FFF4C6B9"
-                    Foreground="#FFFF0039" Margin="79,5,81.667,0"/>
+                    Foreground="#FFFF0039" Margin="79,5,81.667,0"
+                    Command="{Binding DeleteProfileButtonClickCommand}"/>
 
             <Button Grid.Row="4"
                     Content="Gem profil"
-                    Style="{StaticResource SaveButtonTheme}" Margin="0,35,-0.333,5" Grid.RowSpan="2"/>
+                    Style="{StaticResource SaveButtonTheme}" Margin="0,35,-0.333,5" Grid.RowSpan="2"
+                    Command="{Binding SaveButtonClickCommand}"/>
             <Button Grid.Row="6"
                     Content="Tilbage"
                     Style="{StaticResource BackButtonTheme}"
                     Command="{Binding BackCommand}" Margin="0,0,-0.333,0"/>
         </Grid>
         <Label Content="Rediger profil" HorizontalAlignment="Left" Margin="76,63,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Times New Roman" Width="217" Foreground="#FFFF0039" Height="41"/>
-        <Rectangle Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="249" Margin="155.333,63,-369.667,0" Stroke="Black" VerticalAlignment="Top" Width="269"/>
+
+        <Grid Margin="50,0,-150,0" Grid.Column="2">
+            <StackPanel>
+                <Image x:Name="ImageBox" Source="{Binding DisplayedImagePath}"  Height="300" Width="300"  />
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </UserControl>
