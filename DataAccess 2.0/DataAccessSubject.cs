@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTOs;
 
 namespace DataAccessLayer
 {
@@ -21,11 +22,11 @@ namespace DataAccessLayer
         }
 
 
-        public void NotifyObservers(byte[] blob, bool fileType, uint personID)
+        public void NotifyObservers(RelativeDTO relativeDto, bool fileType)
         {
             foreach (var observer in observers)
             {
-                observer.Update(blob, fileType, personID);
+                observer.Update(relativeDto, fileType);
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Media;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
+using DTOs;
 
 
 namespace DataAccessLayer
@@ -85,7 +86,10 @@ namespace DataAccessLayer
 
                         var soundFileBA = File.ReadAllBytes(audioPath);
 
-                        NotifyObservers(soundFileBA, fileType, personID);
+                        RelativeDTO relativeDto = new RelativeDTO();
+                        relativeDto.Audio = soundFileBA;
+                        relativeDto.PersonID = personID; 
+                        NotifyObservers(relativeDto, fileType);
                         data = soundFileBA;
                     }
                 }
@@ -100,20 +104,21 @@ namespace DataAccessLayer
                         imagePath = openFile.FileName; // Set the filename path for the image
 
                         var imageBA = File.ReadAllBytes(imagePath);
-                    //image = new BitmapImage(new Uri(openFile.FileName)); //Adding and showing the image to the image control in the WPF
-                    //var imageBA = ImageToByte(image);
 
-                    NotifyObservers(imageBA, fileType, personID);
+                        RelativeDTO relativeDto = new RelativeDTO();
+                        relativeDto.Picture = imageBA;
+                        relativeDto.PersonID = personID;
+                        
+                        NotifyObservers(relativeDto, fileType);
                         data = imageBA;
                     }
                 }
 
 
 
-
+                //Create and Open connection to the database
                 SqlConnection connection = new SqlConnection(connString);
-                connection.Open(); // Open connection to the database
-
+                connection.Open();
                 SqlCommand command = connection.CreateCommand();
 
 
@@ -121,6 +126,9 @@ namespace DataAccessLayer
                 //query
                 command.CommandText =
                     $"UPDATE Test_table SET {filetype} = {data} WHERE PersonID = {personID}"; //Insert commandtext to database
+
+
+
 
                 //if (fileType)
                 //{
@@ -184,13 +192,33 @@ namespace DataAccessLayer
 
                 string url = @".\bin\Debug\file.mp3";
 
-                NotifyObservers(output, fileType, personID);
+                if (filetype == "Sound")
+                {
 
-                return path;
+                    RelativeDTO relativeDto = new RelativeDTO();
+                    relativeDto.Audio = output;
+                    relativeDto.PersonID = personID;
+                    NotifyObservers(relativeDto, fileType);
 
-                //@"C:\Users\Søren Mehlsen\source\repos\soerenmehlsen\ST4PRJ4_Database_WPF\ST4PRJ4_Database_WPF\bin\Debug\file.mp3"; //file path
-                //mediaPlayer.Open(new Uri(url)); // Open the music file from the path
-                //mediaPlayer.Play(); //Play the sound
+                }
+                else if (filetype == "Image")
+                {
+
+
+                    RelativeDTO relativeDto = new RelativeDTO();
+                    relativeDto.Picture = output;
+                    relativeDto.PersonID = personID;
+                    NotifyObservers(relativeDto, fileType);
+ 
+                }
+
+            //@"C:\Users\Søren Mehlsen\source\repos\soerenmehlsen\ST4PRJ4_Database_WPF\ST4PRJ4_Database_WPF\bin\Debug\file.mp3"; //file path
+            //mediaPlayer.Open(new Uri(url)); // Open the music file from the path
+            //mediaPlayer.Play(); //Play the sound
+
+            return path;
+
+
 
                 //https://stackoverflow.com/questions/2665362/convert-byte-array-to-wav-file
             }
