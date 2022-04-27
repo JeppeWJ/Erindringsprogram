@@ -11,7 +11,7 @@ namespace DataAccessLayer
     public interface IDataAccessObserver
     {
 
-        void Update(byte[] blob, bool fileType, uint personID);
+        void Update(RelativeDTO update, bool fileType);
         List<RelativeDTO> Relatives { get; set; }
         void UpdateFile(bool fileType, uint id);
         void CreateProfile(RelativeDTO newProfile);

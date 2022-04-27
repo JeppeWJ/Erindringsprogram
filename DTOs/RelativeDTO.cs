@@ -10,7 +10,7 @@ namespace DTOs
    {
        public string FirstName { get; set; }
        public string LastName { get; set; }
-       public int PersonID { get; set; }
+       public uint PersonID { get; set; }
        public DateTime DateOfBirth { get; set; }
        public string Relation { get; set; }
        public string Picture { get; set; }
