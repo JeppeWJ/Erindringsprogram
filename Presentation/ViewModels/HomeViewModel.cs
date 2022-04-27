@@ -26,38 +26,16 @@ namespace Presentation.ViewModels
          get { return _selectedProfile; }
          set
          {
-            _selectedProfile = value; 
+            _selectedProfile = value;
             OnPropertyChanged(nameof(SelectedProfile));
          }
       }
+      public HomeViewModel(NavigationControl navigationControl)
+      {
+         _relatives = new ObservableCollection<RelativeViewModel>();
 
-       private string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-       public HomeViewModel(NavigationControl navigationControl)
-       {
-           DataSet ds = new DataSet();
-           using (SqlConnection conn = new SqlConnection(connString))
-           {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                dataAdapter.SelectCommand = new SqlCommand("SELECT * FROM Test_table", conn);
-                dataAdapter.Fill(ds);
-           }
-
-           DataTable dt = new DataTable();
-           dt = ds.Tables[0];
-
-           _relatives = new ObservableCollection<RelativeViewModel>();
-           for (int i = 0; i < dt.Rows.Count; i++)
-           {
-                DataRow dataRow = dt.NewRow();
-                dataRow = dt.Rows[i];
-                RelativeDTO dto = new RelativeDTO();
-                dto.FirstName = dataRow["FirstName"].ToString();
-                _relatives.Add(new RelativeViewModel(dto));
-           }
-            // https://www.youtube.com/watch?v=DF_I628kNvk
-
-           CreateProfileCommand = new CreateCommand(navigationControl);
-           EditProfileCommand = new EditCommand(navigationControl);
+         CreateProfileCommand = new CreateCommand(navigationControl);
+         EditProfileCommand = new EditCommand(navigationControl);
       }
    }
 }
