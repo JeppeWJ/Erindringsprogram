@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DataAccessLayer;
 using DTOs;
 using Presentation.Commands;
 
@@ -14,6 +15,7 @@ namespace Presentation.ViewModels
 {
    class HomeViewModel : ViewModelBase
    {
+      private readonly IDataAccessObserver _relativeManager;
       private readonly ObservableCollection<RelativeViewModel> _relatives;
       public IEnumerable<RelativeViewModel> Relatives => _relatives;
       public ICommand EditProfileCommand { get; }
@@ -30,12 +32,25 @@ namespace Presentation.ViewModels
             OnPropertyChanged(nameof(SelectedProfile));
          }
       }
-      public HomeViewModel(NavigationControl navigationControl)
+      public HomeViewModel(NavigationControl navigationControl, IDataAccessObserver relativeManager)
       {
+         _relativeManager = relativeManager;
          _relatives = new ObservableCollection<RelativeViewModel>();
 
-         CreateProfileCommand = new CreateCommand(navigationControl);
-         EditProfileCommand = new EditCommand(navigationControl);
+         CreateProfileCommand = new CreateCommand(navigationControl, _relativeManager);
+         EditProfileCommand = new EditCommand(navigationControl, _relativeManager);
+
+         UpdateRelatives();
+      }
+
+      private void UpdateRelatives()
+      {
+         foreach (RelativeDTO relative in _relativeManager.Relatives)
+         {
+            RelativeViewModel newRelative = new RelativeViewModel(relative);
+
+            _relatives.Add(newRelative);
+         }
       }
    }
 }

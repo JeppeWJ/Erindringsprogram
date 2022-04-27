@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using DataAccessLayer;
 using LogicLayer.LoginClasses;
 using Presentation.Commands;
 
@@ -39,9 +39,9 @@ namespace Presentation.ViewModels
          }
       }
 
-      public LoginViewModel(ILoginManager loginManager, NavigationControl navigationControl)
+      public LoginViewModel(ILoginManager loginManager, NavigationControl navigationControl, IDataAccessObserver relativeManager)
       {
-         LoginPressed = new LoginCommand(this, loginManager, navigationControl);
+         LoginPressed = new LoginCommand(this, loginManager, navigationControl, relativeManager);
       }
    }
 }

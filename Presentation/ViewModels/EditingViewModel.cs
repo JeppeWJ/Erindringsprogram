@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DataAccessLayer;
 using Presentation.Commands;
 
 namespace Presentation.ViewModels
@@ -15,9 +16,9 @@ namespace Presentation.ViewModels
       public string RelativeName { get; }
       public string Picture { get; }
 
-      public EditingViewModel(NavigationControl navigationControl, RelativeViewModel relative)
+      public EditingViewModel(NavigationControl navigationControl, RelativeViewModel relative, IDataAccessObserver relativeManager)
       {
-         BackCommand = new ToHomeViewCommand(navigationControl);
+         BackCommand = new ToHomeViewCommand(navigationControl, relativeManager);
          _relative = relative;
          RelativeName = _relative.Name;
       }

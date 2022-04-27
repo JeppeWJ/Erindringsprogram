@@ -16,7 +16,7 @@ namespace LogicLayer.RelativeManagerClasses
          Relatives = new List<RelativeDTO>();
          Relatives.Add(new RelativeDTO(){FirstName = "Hans", LastName = "Petersen", Relation = "Søn"});
          Relatives.Add(new RelativeDTO() { FirstName = "Hanne", LastName = "Petersen", Relation = "Datter" });
-
+         Relatives.Add(new RelativeDTO() { FirstName = "Søren", LastName = "Petersen", Relation = "Barnebarn" });
       }
       public void Update(RelativeDTO update, bool fileType)
       {
