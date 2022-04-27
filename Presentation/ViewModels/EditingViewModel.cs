@@ -80,7 +80,7 @@ namespace Presentation.ViewModels
 
         private void SaveButtonClick(object obj)
         {
-            _info.Getinfo().PersonID = RelativeID; //Adding personID to our relative DTO
+            _info.Getinfo().PersonID = (uint) RelativeID; //Adding personID to our relative DTO
             personID = _logic.EditProfile(_info.Getinfo());
         }
 
