@@ -14,6 +14,7 @@ namespace LogicLayer
         private IDataAccessObserver _data;
         private int _personEdit;
         private int _personDelete;
+        private DataAccess dataAccess = new DataAccess();
 
         public Logic()
         {
@@ -38,6 +39,11 @@ namespace LogicLayer
         {
             _personDelete = _data.DeleteProfile(person);
             return _personDelete;
+        }
+
+        public void SelectImageOrAudioFromPC(bool fileType, uint personID)
+        {
+            dataAccess.SelectImageOrAudioFromPC(fileType, personID);
         }
     }
 }
