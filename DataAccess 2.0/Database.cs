@@ -47,9 +47,10 @@ namespace DataAccess_2._0
             _dataAccessObserverImplementation.CreateProfile(newProfile);
         }
 
-        public void DeleteProfile(uint id)
+        public int DeleteProfile(RelativeDTO id)
         {
-            _dataAccessObserverImplementation.DeleteProfile(id);
+            //_dataAccessObserverImplementation.DeleteProfile(id);
+            return 0;
         }
 
         public int UpdateProfile(RelativeDTO person)

@@ -12,12 +12,14 @@ namespace LogicLayer
     public class Logic
     {
         private IDataAccessObserver _data;
-        private int _personID;
+        private int _personEdit;
+        private int _personDelete;
 
         public Logic()
         {
             _data = new Database();
-            _personID = new int();
+            _personEdit = new int();
+            _personDelete = new int();
         }
 
         public RelativeDTO Getinfo()
@@ -28,8 +30,14 @@ namespace LogicLayer
 
         public int EditProfile(RelativeDTO person)
         {
-            _personID = _data.UpdateProfile(person);
-            return _personID;
+            _personEdit = _data.UpdateProfile(person);
+            return _personEdit;
+        }
+
+        public int DeleteProfile(RelativeDTO person)
+        {
+            _personDelete = _data.DeleteProfile(person);
+            return _personDelete;
         }
     }
 }

@@ -85,9 +85,6 @@ namespace Presentation.ViewModels
         }
 
 
-
-
-
         private void DeleteProfileButtonClick(object obj)
         {
             throw new NotImplementedException();
@@ -108,7 +105,6 @@ namespace Presentation.ViewModels
                                                                   //mediaPlayer.Play(); // Play the audio with mediaplayer
             }
         }
-
 
         public BitmapImage DisplayImagePath
         {
