@@ -129,30 +129,6 @@ namespace DataAccessLayer
 
 
 
-
-                //if (fileType)
-                //{
-                //    if (/*command.ExecuteNonQuery() > 0*/     ) 
-                //    {
-                //        MessageBox.Show("Billedet blev uploadet til database");
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("Billedet blev ikke uploadet til database");
-                //    }
-                //}
-                //else
-                //{
-                //    if (/*command.ExecuteNonQuery() > 0*/) 
-                //    {
-                //MessageBox.Show("Lyden blev uploadet til database");
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("Lyden blev ikke uploadet til database");
-                //    }
-                //}
-
                 connection.Close();
         }
 
@@ -223,11 +199,6 @@ namespace DataAccessLayer
                 //https://stackoverflow.com/questions/2665362/convert-byte-array-to-wav-file
             }
 
-
-            public void Update(byte[] blob)
-            {
-
-            }
-
+        
     }
 }
