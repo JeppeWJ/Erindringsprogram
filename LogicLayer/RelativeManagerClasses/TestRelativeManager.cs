@@ -9,34 +9,33 @@ using DTOs;
 namespace LogicLayer.RelativeManagerClasses
 {
    public class TestRelativeManager : IDataAccessObserver
-    {
-       public void Update(RelativeDTO update, bool fileType)
-       {
-          throw new NotImplementedException();
-       }
+   {
+      public List<RelativeDTO> Relatives { get; set; }
+      public TestRelativeManager()
+      {
+         Relatives = new List<RelativeDTO>();
+         Relatives.Add(new RelativeDTO(){FirstName = "Hans", LastName = "Petersen", Relation = "Søn"});
+         Relatives.Add(new RelativeDTO() { FirstName = "Hanne", LastName = "Petersen", Relation = "Datter" });
+         Relatives.Add(new RelativeDTO() { FirstName = "Søren", LastName = "Petersen", Relation = "Barnebarn" });
+      }
+      public void Update(RelativeDTO update, bool fileType)
+      {
 
-       public List<RelativeDTO> Relatives { get; set; }
-       public void UpdateFile(bool fileType, uint id)
-       {
-          throw new NotImplementedException();
-       }
+      }
+      public void UpdateFile(bool fileType, uint id)
+      {
 
-       public void CreateProfile(RelativeDTO newProfile)
-       {
-          throw new NotImplementedException();
-       }
+      }
+      public void CreateProfile(RelativeDTO newProfile)
+      {
 
-       public void DeleteProfile(uint id)
-       {
-          throw new NotImplementedException();
-       }
+      }
+      public void DeleteProfile(uint id)
+      {
 
-       public void EditProfile(RelativeDTO profile)
-       {
-          throw new NotImplementedException();
-       }
-
-       //private DataAccess _dataAccess;
+      }
+      public void EditProfile(RelativeDTO profile)
+      {
 
       public TestRelativeManager()
       {
