@@ -51,7 +51,72 @@ namespace DataAccessLayer
 
 
 
+        public void SelectImageOrAudioFromPC(bool fileType, uint personID)
+        {
+            byte[] data = new byte[] { };
+            string filetype;
 
+            if (fileType)
+            {
+                filetype = "Sound";
+            }
+            else
+            {
+                filetype = "Image";
+            }
+
+            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
+
+            openFile.FileName = "";
+
+            if (filetype == "Sound")
+            {
+                openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
+
+                if (
+                    openFile.ShowDialog() ==
+                    true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                {
+                    audioPath = openFile.FileName; // Set the filename path for the audio
+
+                    //var soundFileBA = File.ReadAllBytes(audioPath);
+
+
+
+                    RelativeDTO relativeDto = new RelativeDTO();
+                    relativeDto.Audio = audioPath;
+                    relativeDto.PersonID = personID;
+                    
+
+
+                    NotifyObservers(relativeDto, fileType);
+                    //data = soundFileBA;
+                }
+            }
+            else if (filetype == "Image")
+            {
+                openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
+
+                if (
+                    openFile.ShowDialog() ==
+                    true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                {
+                    imagePath = openFile.FileName; // Set the filename path for the image
+
+                    var imageBA = File.ReadAllBytes(imagePath);
+
+                    RelativeDTO relativeDto = new RelativeDTO();
+                    relativeDto.Picture = imageBA;
+                    relativeDto.PersonID = personID;
+
+                    NotifyObservers(relativeDto, fileType);
+                    data = imageBA;
+                }
+            }
+
+
+            
+        }
 
         public void UploadImageOrAudioToDB(bool fileType, uint personID) // Upload the sound to the database
         {

@@ -8,7 +8,7 @@ using DTOs;
 
 namespace LogicLayer.RelativeManagerClasses
 {
-    class RelativeManagerDataAccessOpserver //: IDataAccessObserver
+    public class RelativeManagerDataAccessOpserver : IDataAccessObserver
     {
         public RelativeManagerDataAccessOpserver()
         {
@@ -58,6 +58,21 @@ namespace LogicLayer.RelativeManagerClasses
         public void CreateProfile(RelativeDTO newProfile)
         {
             throw new NotImplementedException();
+        }
+
+        public int DeleteProfile(RelativeDTO person)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateProfile(RelativeDTO person)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RelativeDTO PersonInfo(uint personID)
+        {
+            return Relatives.Find(PersonDTO => PersonDTO.PersonID == personID);
         }
 
         public void DeleteProfile(uint id)

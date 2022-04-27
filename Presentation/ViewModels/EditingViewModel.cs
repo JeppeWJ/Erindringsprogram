@@ -10,8 +10,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LogicLayer;
+using LogicLayer.RelativeManagerClasses;
 using Microsoft.Win32;
 using Presentation.Commands;
+
 
 namespace Presentation.ViewModels
 {
@@ -30,6 +32,7 @@ namespace Presentation.ViewModels
         private Logic _logic;
         private Logic _info = new Logic();
         private int personID;
+        
 
         public EditingViewModel(NavigationControl navigationControl, RelativeViewModel relative)
         {
@@ -118,18 +121,30 @@ namespace Presentation.ViewModels
 
         private void PictureButtonClick(object obj)
         {
-            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
+            _logic.SelectImageOrAudioFromPC(true, Convert.ToUInt32(RelativeID));
 
-            openFile.FileName = "";
+            RelativeManagerDataAccessOpserver relativeManager = new RelativeManagerDataAccessOpserver();
+            var person =
+            relativeManager.PersonInfo(Convert.ToUInt32(RelativeID));
 
-            openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
 
-            if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
-            {
-                _info.Getinfo().Picture = openFile.FileName; // Set the filename path for the image
-                DisplayImagePath = new BitmapImage(new Uri(openFile.FileName, UriKind.Relative)); //Adding and showing the image to the image control in the WPF
 
-            }
+
+
+
+
+            //OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
+
+            //openFile.FileName = "";
+
+            //openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
+
+            //if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+            //{
+            //    _info.Getinfo().Picture = openFile.FileName; // Set the filename path for the image
+            //    DisplayImagePath = new BitmapImage(new Uri(openFile.FileName, UriKind.Relative)); //Adding and showing the image to the image control in the WPF
+
+            //}
         }
     }
 }
