@@ -15,8 +15,8 @@ namespace DataAccessLayer
         List<RelativeDTO> Relatives { get; set; }
         void UpdateFile(bool fileType, uint id);
         void CreateProfile(RelativeDTO newProfile);
-        int DeleteProfile(RelativeDTO person);
-        int UpdateProfile(RelativeDTO person);
-        RelativeDTO PersonInfo();
+        void DeleteProfile(uint id);
+        void EditProfile(RelativeDTO person);
+        
     }
 }

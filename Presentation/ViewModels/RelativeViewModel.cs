@@ -12,7 +12,7 @@ namespace Presentation.ViewModels
    {
       private readonly RelativeDTO _relative;
       public string Name => _relative.FirstName;
-      public int ID => _relative.PersonID;
+      public int ID => (int)_relative.PersonID;
       //public string PictureString => _relative.PictureString;
       //public Array[] AudioFile => _relative.AudioFile;
 

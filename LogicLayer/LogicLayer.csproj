@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic.cs" />
     <Compile Include="LoginClasses\ILoginManager.cs" />
     <Compile Include="LoginClasses\LoginInfoDTO.cs" />
     <Compile Include="LoginClasses\TestLoginManager.cs" />
