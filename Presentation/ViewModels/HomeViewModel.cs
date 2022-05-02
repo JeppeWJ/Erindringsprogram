@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DataAccessLayer;
 using DTOs;
 using Presentation.Commands;
 
@@ -14,6 +15,7 @@ namespace Presentation.ViewModels
 {
    class HomeViewModel : ViewModelBase
    {
+      private readonly IDataAccessObserver _relativeManager;
       private readonly ObservableCollection<RelativeViewModel> _relatives;
       public IEnumerable<RelativeViewModel> Relatives => _relatives;
       public ICommand EditProfileCommand { get; }
@@ -26,38 +28,29 @@ namespace Presentation.ViewModels
          get { return _selectedProfile; }
          set
          {
-            _selectedProfile = value; 
+            _selectedProfile = value;
             OnPropertyChanged(nameof(SelectedProfile));
          }
       }
+      public HomeViewModel(NavigationControl navigationControl, IDataAccessObserver relativeManager)
+      {
+         _relativeManager = relativeManager;
+         _relatives = new ObservableCollection<RelativeViewModel>();
 
-       private string connString = "Server=tcp:st4prj4.database.windows.net,1433;Initial Catalog=ST4PRJ4;Persist Security Info=False;User ID=azureuser;Password=Katrinebjerg123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-       public HomeViewModel(NavigationControl navigationControl)
-       {
-           DataSet ds = new DataSet();
-           using (SqlConnection conn = new SqlConnection(connString))
-           {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                dataAdapter.SelectCommand = new SqlCommand("SELECT * FROM Test_table", conn);
-                dataAdapter.Fill(ds);
-           }
+         CreateProfileCommand = new CreateCommand(navigationControl, _relativeManager);
+         EditProfileCommand = new EditCommand(navigationControl, _relativeManager);
 
-           DataTable dt = new DataTable();
-           dt = ds.Tables[0];
+         UpdateRelatives();
+      }
 
-           _relatives = new ObservableCollection<RelativeViewModel>();
-           for (int i = 0; i < dt.Rows.Count; i++)
-           {
-                DataRow dataRow = dt.NewRow();
-                dataRow = dt.Rows[i];
-                RelativeDTO dto = new RelativeDTO();
-                dto.FirstName = dataRow["FirstName"].ToString();
-                _relatives.Add(new RelativeViewModel(dto));
-           }
-            // https://www.youtube.com/watch?v=DF_I628kNvk
+      private void UpdateRelatives()
+      {
+         foreach (RelativeDTO relative in _relativeManager.Relatives)
+         {
+            RelativeViewModel newRelative = new RelativeViewModel(relative);
 
-           CreateProfileCommand = new CreateCommand(navigationControl);
-           EditProfileCommand = new EditCommand(navigationControl);
+            _relatives.Add(newRelative);
+         }
       }
    }
 }

@@ -11,13 +11,14 @@ namespace Presentation.ViewModels
    public class RelativeViewModel : ViewModelBase
    {
       private readonly RelativeDTO _relative;
-      public string Name => _relative.FirstName;
-      //public string PictureString => _relative.PictureString;
-      //public Array[] AudioFile => _relative.AudioFile;
+
+      public string Name { get; }
 
       public RelativeViewModel(RelativeDTO relative)
       {
          _relative = relative;
+         Name = _relative.FirstName + " " + _relative.LastName;
+
       }
    }
 }

@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DataAccessLayer;
 using Presentation.Commands;
 
 namespace Presentation.ViewModels
@@ -14,10 +15,10 @@ namespace Presentation.ViewModels
       private readonly NavigationControl _navigationControl;
       public ICommand BackCommand { get; }
 
-      public CreateProfileViewModel(NavigationControl navigationControl)
+      public CreateProfileViewModel(NavigationControl navigationControl, IDataAccessObserver relativeManager)
       {
          _navigationControl = navigationControl;
-         BackCommand = new ToHomeViewCommand(navigationControl);
+         BackCommand = new ToHomeViewCommand(navigationControl, relativeManager);
       }
    }
 }
