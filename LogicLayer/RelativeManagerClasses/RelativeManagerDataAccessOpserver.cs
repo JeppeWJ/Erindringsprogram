@@ -10,19 +10,21 @@ namespace LogicLayer.RelativeManagerClasses
 {
     class RelativeManagerDataAccessOpserver : IDataAccessObserver
     {
-        public RelativeManagerDataAccessOpserver()
-        {
-            DataAccessSubject dataAccessSubject = new DataAccessSubject();
-            dataAccessSubject.Attach(this);
-        }
-
         public List<RelativeDTO> Relatives { get; set; }
         private byte[] Blob;
         private bool FileType;
         private uint PersonID;
 
+        public RelativeManagerDataAccessOpserver()
+        {
+            DataAccessSubject dataAccessSubject = new DataAccessSubject();
+            dataAccessSubject.Attach(this);
 
-
+            Relatives = new List<RelativeDTO>();
+            Relatives.Add(new RelativeDTO() { FirstName = "Hans", LastName = "Petersen", Relation = "Søn" });
+            Relatives.Add(new RelativeDTO() { FirstName = "Hanne", LastName = "Petersen", Relation = "Datter" });
+            Relatives.Add(new RelativeDTO() { FirstName = "Søren", LastName = "Petersen", Relation = "Barnebarn" });
+        }
 
         public void Update(RelativeDTO updateRelativeDto, bool fileType)
         {
