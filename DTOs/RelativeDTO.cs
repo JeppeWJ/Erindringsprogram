@@ -13,8 +13,8 @@ namespace DTOs
        public uint PersonID { get; set; }
        public DateTime DateOfBirth { get; set; }
        public string Relation { get; set; }
-       public Byte[] Picture { get; set; }
-       public Byte[] Audio { get; set; }
+       public string Picture { get; set; }
+       public string Audio { get; set; }
 
        public RelativeDTO() { }
        

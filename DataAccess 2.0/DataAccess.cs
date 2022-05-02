@@ -26,8 +26,7 @@ namespace DataAccessLayer
         private string imagePath { get; set; }
         public string audioPath { get; set; }
         private SqlDataReader dataReader;
-
-
+        private IDataAccessObserver _dataAccessObserverImplementation;
 
 
         public static byte[] ImageToByte(BitmapImage bitmapImage)
@@ -52,7 +51,67 @@ namespace DataAccessLayer
 
 
 
+        public void SelectImageOrAudioFromPC(bool fileType, uint personID)
+        {
+            byte[] data = new byte[] { };
+            string filetype;
 
+            if (fileType)
+            {
+                filetype = "Sound";
+            }
+            else
+            {
+                filetype = "Image";
+            }
+
+            OpenFileDialog openFile = new OpenFileDialog(); //create object for Filedialog
+
+            openFile.FileName = "";
+
+            if (filetype == "Sound")
+            {
+                openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
+
+                if (
+                    openFile.ShowDialog() ==
+                    true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                {
+                    audioPath = openFile.FileName; // Set the filename path for the audio
+
+                    //var soundFileBA = File.ReadAllBytes(audioPath);
+
+
+                    RelativeDTO relativeDto = new RelativeDTO();
+                    relativeDto.Audio = audioPath;
+                    relativeDto.PersonID = personID;
+                    
+                    NotifyObservers(relativeDto, fileType);
+                    
+                }
+            }
+            else if (filetype == "Image")
+            {
+                openFile.Filter = "Supported Images|*.jpg;*.jpeg.*png"; // Filter only supported pictures
+
+                if (
+                    openFile.ShowDialog() ==
+                    true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                {
+                    imagePath = openFile.FileName; // Set the filename path for the image
+
+                    RelativeDTO relativeDto = new RelativeDTO();
+                    relativeDto.Picture = imagePath;
+                    relativeDto.PersonID = personID;
+
+                    NotifyObservers(relativeDto, fileType);
+                   
+                }
+            }
+
+
+            
+        }
 
         public void UploadImageOrAudioToDB(bool fileType, uint personID) // Upload the sound to the database
         {
@@ -78,16 +137,14 @@ namespace DataAccessLayer
                 {
                     openFile.Filter = "MP3 files|*.mp3"; // Filter only supported mp3 files
 
-                    if (
-                        openFile.ShowDialog() ==
-                        true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
+                    if (openFile.ShowDialog() == true) //Opens a dialog from the computer and if OK is clicked, the code in the if-statement will be executed
                     {
                         audioPath = openFile.FileName; // Set the filename path for the audio
 
                         var soundFileBA = File.ReadAllBytes(audioPath);
 
                         RelativeDTO relativeDto = new RelativeDTO();
-                        relativeDto.Audio = soundFileBA;
+                        relativeDto.Audio = audioPath;
                         relativeDto.PersonID = personID; 
                         NotifyObservers(relativeDto, fileType);
                         data = soundFileBA;
@@ -106,7 +163,7 @@ namespace DataAccessLayer
                         var imageBA = File.ReadAllBytes(imagePath);
 
                         RelativeDTO relativeDto = new RelativeDTO();
-                        relativeDto.Picture = imageBA;
+                        relativeDto.Picture = imagePath;
                         relativeDto.PersonID = personID;
                         
                         NotifyObservers(relativeDto, fileType);
@@ -114,27 +171,21 @@ namespace DataAccessLayer
                     }
                 }
 
-
-
                 //Create and Open connection to the database
                 SqlConnection connection = new SqlConnection(connString);
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
 
-
-
                 //query
-                command.CommandText =
-                    $"UPDATE Test_table SET {filetype} = {data} WHERE PersonID = {personID}"; //Insert commandtext to database
+                command.CommandText = $"UPDATE Test_table SET {filetype} = {data} WHERE PersonID = {personID}"; //Insert commandtext to database
 
-
-
+                //Close connection to the database
                 connection.Close();
         }
 
 
 
-            public string GetImageOrAudioFromDB(bool fileType, uint personID) // Receive the sound from database
+            public void GetImageOrAudioFromDB(bool fileType, uint personID) // Receive the sound from database
             {
                 byte[] output = new byte[] { };
                 string filetype;
@@ -162,40 +213,31 @@ namespace DataAccessLayer
 
                 connection.Close();
 
-                var path = @"file.mp3"; // Specifying a file name
-                File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
-
-
-                string url = @".\bin\Debug\file.mp3";
+                
 
                 if (filetype == "Sound")
                 {
-
+                    var path = $@"sound-{personID}.mp3"; // Specifying a file name
+                    File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
+                    string url = $@".\bin\Debug\sound-{personID}.mp3";
+                    
                     RelativeDTO relativeDto = new RelativeDTO();
-                    relativeDto.Audio = output;
+                    relativeDto.Audio = url; // We set the audio path for our audio in the DTO
                     relativeDto.PersonID = personID;
                     NotifyObservers(relativeDto, fileType);
 
                 }
                 else if (filetype == "Image")
                 {
-
+                    var path = $@"image-{personID}.jpg"; // Specifying a file name
+                    File.WriteAllBytes(path, output); // Save the filename and byte array in a mp3 file
+                    string url = $@".\bin\Debug\image-{personID}.mp3";
 
                     RelativeDTO relativeDto = new RelativeDTO();
-                    relativeDto.Picture = output;
+                    relativeDto.Picture = url; // We set the image path for our image in the DTO
                     relativeDto.PersonID = personID;
                     NotifyObservers(relativeDto, fileType);
- 
                 }
-
-            //@"C:\Users\Søren Mehlsen\source\repos\soerenmehlsen\ST4PRJ4_Database_WPF\ST4PRJ4_Database_WPF\bin\Debug\file.mp3"; //file path
-            //mediaPlayer.Open(new Uri(url)); // Open the music file from the path
-            //mediaPlayer.Play(); //Play the sound
-
-            return path;
-
-
-
                 //https://stackoverflow.com/questions/2665362/convert-byte-array-to-wav-file
             }
 

@@ -16,6 +16,7 @@ namespace DataAccessLayer
         void UpdateFile(bool fileType, uint id);
         void CreateProfile(RelativeDTO newProfile);
         void DeleteProfile(uint id);
-        void EditProfile(RelativeDTO profile);
+        void EditProfile(RelativeDTO person);
+        
     }
 }
